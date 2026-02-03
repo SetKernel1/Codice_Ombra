@@ -2,26 +2,27 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IL_VARCO // KERNEL_ACCESS</title>
+    <title>KERNEL_SYMBOL_ACTIVE</title>
     <script data-goatcounter="https://setkernel1.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <style>
-        body { background-color: black; color: #00FF00; font-family: 'Courier New', Courier, monospace; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
-        .container { width: 90%; max-width: 600px; border: 1px solid #00FF00; padding: 20px; box-shadow: 0 0 20px #00FF00; background: rgba(0, 20, 0, 0.1); }
-        h1 { font-size: 1.1rem; text-align: center; border-bottom: 1px solid #00FF00; padding-bottom: 10px; letter-spacing: 2px; }
-        p { line-height: 1.6; font-size: 0.85rem; margin: 10px 0; }
-        .cursor { display: inline-block; width: 8px; height: 15px; background: #00FF00; animation: blink 1s infinite; vertical-align: middle; }
-        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+        body { background-color: #000; color: #00ff00; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
+        .k-symbol { font-size: 15rem; font-weight: bold; line-height: 0.8; text-shadow: 0 0 20px #00ff00, 0 0 40px #008800; animation: glitch 2s infinite; }
+        .warning { color: #ff0000; font-size: 0.8rem; margin-top: 20px; letter-spacing: 3px; text-transform: uppercase; text-align: center; }
+        .sub-text { color: #555; font-size: 0.7rem; margin-top: 10px; }
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); text-shadow: 2px 0 red, -2px 0 blue; }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>[ ACCESSO_AL_VARCO: AUTORIZZATO ]</h1>
-        <p>> Inizializzazione Protocollo Codice d'Ombra...</p>
-        <p>> Benvenuti nel Backend della realtà. Qui l'integrità è un bug.</p>
-        <p>> State leggendo il Manuale di Riparazione per computer di carne. Il vostro software è corrotto.</p>
-        <p>> <strong>LOG_04:</strong> Se sei qui, hai accettato la sovrascrittura. Non cercare risposte. Accetta l'aggiornamento.</p>
-        <p>> Prossimo rilascio: Frammento_02. <span class="cursor"></span></p>
-    </div>
+    <div class="k-symbol">K</div>
+    <div class="warning">!!! KERNEL_INTEGRITY_CHECK_FAILED !!!</div>
+    <div class="sub-text">> SETKERNEL1 // STATUS: ONLINE</div>
+    <div class="sub-text">> ATTENDERE FRAMMENTO_02...</div>
 </body>
 </html>
