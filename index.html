@@ -1,92 +1,77 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISTEMA_SINAPSI</title>
-    <style>
-        body, html {
-            height: 100%; margin: 0; background-color: #000;
-            display: flex; justify-content: center; align-items: center;
-            font-family: 'Courier New', monospace; overflow: hidden; color: #0F0;
-        }
+<meta charset="UTF-8">
+<title>My GitHub Page</title>
 
-        /* Il Teschio Verde */
-        .skull-frame {
-            position: absolute;
-            width: 90%; max-width: 500px; aspect-ratio: 1/1;
-            /* Assicurati che il file si chiami teschio.jpg sul tuo GitHub */
-            background: url('teschio.jpg') no-repeat center center;
-            background-size: contain;
-            z-index: 1;
-        }
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: #00ff66;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-        /* Area di Input */
-        .input-box {
-            position: absolute; bottom: 20%; width: 280px;
-            text-align: center; z-index: 10;
-            background: rgba(0,0,0,0.8); padding: 10px;
-            border-radius: 5px;
-        }
+.container {
+    text-align: center;
+}
 
-        input {
-            background: transparent; border: none; border-bottom: 2px solid #0F0;
-            color: #FFF; font-family: 'Courier New', monospace; font-size: 1.4rem;
-            text-align: center; width: 100%; outline: none;
-            text-transform: uppercase; letter-spacing: 5px; padding: 5px 0;
-            text-shadow: 0 0 10px #0F0;
-        }
+h1 {
+    font-size: 48px;
+    text-shadow: 0 0 10px #00ff66;
+}
 
-        .status { margin-top: 10px; font-size: 0.7rem; letter-spacing: 2px; }
-    </style>
+p {
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+button {
+    margin-top: 20px;
+    background: transparent;
+    border: 1px solid #00ff66;
+    color: #00ff66;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #00ff66;
+    color: black;
+}
+
+.matrix {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+}
+</style>
 </head>
-<body onclick="playAmbient()">
 
-    <audio id="bg-track" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" type="audio/mpeg">
-    </audio>
+<body>
 
-    <div class="skull-frame"></div>
-    
-    <div class="input-box">
-        <input type="password" id="pass" placeholder="CHIAVE" autofocus autocomplete="off">
-        <div id="status" class="status">SISTEMA_ONLINE // 06.02.2026</div>
-    </div>
+<canvas class="matrix"></canvas>
 
-    <script>
-        const passField = document.getElementById('pass');
-        const statusText = document.getElementById('status');
-        const audio = document.getElementById('bg-track');
-        let playing = false;
+<div class="container">
+    <h1>WELCOME</h1>
+    <p>GitHub Pages Online</p>
+    <button onclick="alert('Access granted')">ENTER</button>
+</div>
 
-        function playAmbient() {
-            if(!playing) {
-                audio.volume = 0.2;
-                audio.play().catch(() => {});
-                playing = true;
-            }
-        }
+<script>
+const canvas = document.querySelector(".matrix");
+const ctx = canvas.getContext("2d");
 
-        passField.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                if (passField.value.toUpperCase() === "SINAPSI") {
-                    statusText.innerText = "ACCESSO_CONFERMATO. INGRESSO...";
-                    document.body.style.transition = "1.5s";
-                    document.body.style.opacity = "0";
-                    setTimeout(() => { 
-                        window.location.href = "prefazione.html"; 
-                    }, 1500);
-                } else {
-                    statusText.innerText = "ERRORE_DI_SINCRO";
-                    statusText.style.color = "#F00";
-                    passField.value = "";
-                    setTimeout(() => { 
-                        statusText.innerText = "SISTEMA_ONLINE // 06.02.2026"; 
-                        statusText.style.color = "#0F0";
-                    }, 1500);
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "01";
+const fontSize =
