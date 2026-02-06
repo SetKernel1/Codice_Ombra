@@ -1,72 +1,78 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<title>Access Terminal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA_SINAPSI</title>
+    <style>
+        body, html {
+            height: 100%; margin: 0; background-color: #000;
+            display: flex; justify-content: center; align-items: center;
+            font-family: 'Courier New', monospace; overflow: hidden; color: #0F0;
+        }
 
-<style>
-body{
-margin:0;
-background:black;
-color:#00ff66;
-font-family:monospace;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-}
+        /* Il Teschio: Caricato via URL per evitare errori di file locali */
+        .skull-frame {
+            position: absolute;
+            width: 90%; max-width: 550px; aspect-ratio: 1/1;
+            background: url('https://raw.githubusercontent.com/setkernel1/setkernel1.github.io/main/1000010447.png') no-repeat center center;
+            background-size: contain;
+            z-index: 1;
+        }
 
-.box{
-text-align:center;
-}
+        .input-box {
+            position: absolute; bottom: 25%; width: 280px;
+            text-align: center; z-index: 10;
+        }
 
-input{
-background:transparent;
-border:none;
-border-bottom:2px solid #00ff66;
-color:#00ff66;
-font-size:20px;
-outline:none;
-text-align:center;
-}
+        input {
+            background: rgba(0,0,0,0.8); border: none; border-bottom: 2px solid #0F0;
+            color: #FFF; font-family: 'Courier New', monospace; font-size: 1.4rem;
+            text-align: center; width: 100%; outline: none;
+            text-transform: uppercase; letter-spacing: 5px; padding: 10px 0;
+            text-shadow: 0 0 10px #0F0;
+        }
 
-button{
-margin-top:20px;
-background:black;
-border:1px solid #00ff66;
-color:#00ff66;
-padding:10px 30px;
-}
-
-.hidden{
-display:none;
-}
-</style>
+        .status { margin-top: 15px; font-size: 0.7rem; letter-spacing: 2px; }
+    </style>
 </head>
+<body onclick="attivaSistema()">
 
-<body>
+    <audio id="ambient" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" type="audio/mpeg">
+    </audio>
 
-<div class="box" id="login">
-<h2>PASSWORD</h2>
-<input id="pass" type="password"><br>
-<button onclick="check()">ENTER</button>
-</div>
+    <div class="skull-frame"></div>
+    
+    <div class="input-box">
+        <input type="password" id="pass" placeholder="CHIAVE" autofocus autocomplete="off">
+        <div id="status" class="status">SISTEMA_SILENZIOSO // DATA_06.02</div>
+    </div>
 
-<div class="box hidden" id="ok">
-<h1>ACCESS GRANTED</h1>
-<p>SISTEMA STABILE</p>
-</div>
+    <script>
+        const pass = document.getElementById('pass');
+        const status = document.getElementById('status');
+        const audio = document.getElementById('ambient');
 
-<script>
-function check(){
-if(document.getElementById("pass").value=="1234"){
-document.getElementById("login").style.display="none";
-document.getElementById("ok").classList.remove("hidden");
-}else{
-alert("ACCESS DENIED");
-}
-}
-</script>
+        // Attiva l'audio al primo tocco
+        function attivaSistema() {
+            audio.volume = 0.2;
+            audio.play().catch(() => {});
+        }
 
+        pass.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                if (pass.value.toUpperCase() === "SINAPSI") {
+                    status.innerText = "ACCESSO_OK. INGRESSO...";
+                    document.body.style.transition = "1.5s";
+                    document.body.style.opacity = "0";
+                    setTimeout(() => { window.location.href = "prefazione.html"; }, 1500);
+                } else {
+                    status.innerText = "CHIAVE_ERRATA";
+                    pass.value = "";
+                }
+            }
+        });
+    </script>
 </body>
 </html>
