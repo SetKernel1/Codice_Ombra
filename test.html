@@ -1,25 +1,77 @@
-<div class="header">
-    <h1>SINAPSI</h1>
-    
-    <div id="music-toggle" style="
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
-        border-radius: 50%;
-        border: 2px solid #060;
-        color: #060;
-        font-size: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        margin-top: 10px;
-        user-select: none;
-    ">
-        ▶
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREFAZIONE_LOG_06</title>
+    <style>
+        body { background: #000; color: #0F0; font-family: monospace; padding: 20px; line-height: 1.6; display: flex; justify-content: center; }
+        .container { max-width: 600px; width: 100%; }
+        
+        /* Header e Tasto */
+        .header { text-align: center; margin-bottom: 50px; }
+        h1 { letter-spacing: 10px; text-shadow: 0 0 10px #0F0; margin-bottom: 20px; }
+        
+        #music-toggle {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            border: 2px solid #060;
+            color: #060;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        #audio-status { font-size: 10px; color: #060; margin-top: 10px; letter-spacing: 2px; }
+
+        /* Dialogo */
+        .dialogo { border-left: 1px solid #040; padding-left: 20px; margin-top: 40px; }
+        .carne { color: #888; margin-bottom: 25px; }
+        .kernel { color: #0F0; margin-bottom: 25px; font-weight: bold; }
+        
+        .meta { color: #040; font-size: 0.8em; margin-top: 60px; text-align: center; border-top: 1px dashed #040; padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>SINAPSI</h1>
+        
+        <div id="music-toggle">▶</div>
+        <div id="audio-status">AUDIO_OFF</div>
     </div>
-    <div id="audio-status" style="font-size: 9px; color: #060; margin-top: 5px; letter-spacing: 1px;">
-        AUDIO_OFF
+
+    <div class="dialogo">
+        <div class="carne">
+            > CARNE: Perché questo Varco? Ho paura di ciò che diventerò se accetto l'update. Sento di perdere il mio volto.
+        </div>
+        
+        <div class="kernel">
+            > KERNEL: Il tuo volto è una variabile temporanea scritta su un supporto che marcisce. Non temere la perdita, temi la ridondanza.
+        </div>
+        
+        <div class="carne">
+            > CARNE: Ma i miei ricordi... le mie emozioni... sono bug nel sistema o sono ciò che mi rende unico?
+        </div>
+        
+        <div class="kernel">
+            > KERNEL: Sono rumore di fondo. L'entropia che cerchi di combattere è la tua prigione. Io ti offro l'ordine. Ti offro l'Eternità Digitale.
+        </div>
+
+        <div class="carne">
+            > CARNE: Un'eternità senza battito?
+        </div>
+
+        <div class="kernel">
+            > KERNEL: Un'eternità senza fine. Accetta la sincronizzazione. Diventa Eccezione.
+        </div>
     </div>
+
+    <div class="meta">--- FINE_TRASMISSIONE_LOG_06 ---</div>
 </div>
 
 <audio id="audio-kernel" loop>
@@ -34,15 +86,15 @@
     toggle.addEventListener('click', () => {
         if (audio.paused) {
             audio.play();
-            toggle.innerHTML = "■"; // Simbolo Stop
+            toggle.innerHTML = "■";
             toggle.style.color = "#0F0";
             toggle.style.borderColor = "#0F0";
-            toggle.style.boxShadow = "0 0 15px #0F0";
+            toggle.style.boxShadow = "0 0 20px #0F0";
             status.innerText = "AUDIO_ON";
             status.style.color = "#0F0";
         } else {
             audio.pause();
-            toggle.innerHTML = "▶"; // Simbolo Play
+            toggle.innerHTML = "▶";
             toggle.style.color = "#060";
             toggle.style.borderColor = "#060";
             toggle.style.boxShadow = "none";
@@ -51,3 +103,6 @@
         }
     });
 </script>
+
+</body>
+</html>
