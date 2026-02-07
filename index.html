@@ -6,116 +6,69 @@
     <title>SISTEMA_SINAPSI</title>
     <style>
         body, html {
-            height: 100%;
-            margin: 0;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Courier New', monospace;
-            overflow: hidden;
-            color: #0F0;
+            height: 100%; margin: 0; background-color: #000;
+            display: flex; justify-content: center; align-items: center;
+            font-family: 'Courier New', monospace; overflow: hidden; color: #0F0;
         }
 
-        /* Il Teschio - Caricato tramite URL assoluto per massima compatibilità */
-        .skull-container {
+        /* Container con immagine forzata */
+        .skull-view {
             position: absolute;
-            width: 90%;
-            max-width: 600px;
-            aspect-ratio: 1/1;
-            /* Usiamo l'indirizzo web diretto del tuo file su GitHub */
-            background: url('https://raw.githubusercontent.com/setkernel1/setkernel1.github.io/main/1000010447.png') no-repeat center center;
+            width: 100vw; height: 100vh;
+            background: url('1000010447.png?v=123') no-repeat center center;
             background-size: contain;
             z-index: 1;
         }
 
-        /* Overlay per migliorare la visibilità su mobile */
-        .overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, transparent 20%, black 90%);
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .input-box {
-            position: absolute;
-            bottom: 25%; 
-            width: 250px;
-            text-align: center;
-            z-index: 10;
+        .interface {
+            position: relative; z-index: 10;
+            text-align: center; margin-top: 250px;
         }
 
         input {
-            background: rgba(0, 0, 0, 0.7);
-            border: none;
-            border-bottom: 2px solid #0F0;
-            color: #FFF;
-            font-family: 'Courier New', monospace;
-            font-size: 1.2rem;
-            text-align: center;
-            width: 100%;
-            outline: none;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            padding: 8px;
+            background: rgba(0,0,0,0.8); border: none;
+            border-bottom: 2px solid #0F0; color: #FFF;
+            font-family: 'Courier New', monospace; font-size: 1.5rem;
+            text-align: center; width: 250px; outline: none;
+            text-transform: uppercase; letter-spacing: 5px; padding: 10px;
         }
 
-        .status {
-            margin-top: 15px;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-shadow: 0 0 5px #0F0;
-        }
+        .log { margin-top: 15px; font-size: 0.8rem; letter-spacing: 2px; }
     </style>
 </head>
-<body onclick="startExperience()">
+<body onclick="wakeUp()">
 
-    <div class="overlay"></div>
-
-    <audio id="bg-audio" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" type="audio/mpeg">
+    <audio id="ambient" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="skull-container"></div>
+    <div class="skull-view"></div>
 
-    <div class="input-box">
-        <input type="password" id="pass-field" placeholder="CHIAVE" autofocus autocomplete="off">
-        <div id="status-text" class="status">SISTEMA_STABILE // 07.02.2026</div>
+    <div class="interface">
+        <input type="password" id="key" placeholder="CHIAVE" autofocus>
+        <div id="status" class="log">SISTEMA_IN_ATTESA...</div>
     </div>
 
     <script>
-        const passField = document.getElementById('pass-field');
-        const statusText = document.getElementById('status-text');
-        const audio = document.getElementById('bg-audio');
-        let audioStarted = false;
+        const key = document.getElementById('key');
+        const status = document.getElementById('status');
+        const audio = document.getElementById('ambient');
 
-        // Avvio audio al primo tocco dell'utente
-        function startExperience() {
-            if (!audioStarted) {
-                audio.volume = 0.2;
-                audio.play();
-                audioStarted = true;
-            }
+        function wakeUp() {
+            audio.volume = 0.3;
+            audio.play().catch(() => {});
         }
 
-        passField.addEventListener('keypress', (e) => {
+        key.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                if (passField.value.toUpperCase() === "SINAPSI") {
-                    statusText.innerText = "SINCRO_STABILIZZATA...";
-                    document.body.style.transition = "opacity 1.5s";
+                if (key.value.toUpperCase() === "SINAPSI") {
+                    status.innerText = "SINCRO_EFFETTUATA";
                     document.body.style.opacity = "0";
-                    setTimeout(() => {
-                        window.location.href = "prefazione.html";
-                    }, 1500);
+                    document.body.style.transition = "1s";
+                    setTimeout(() => { window.location.href = "prefazione.html"; }, 1000);
                 } else {
-                    statusText.innerText = "ERRORE_LOGICA";
-                    statusText.style.color = "#F00";
-                    passField.value = "";
-                    setTimeout(() => {
-                        statusText.innerText = "SISTEMA_STABILE // 07.02.2026";
-                        statusText.style.color = "#0F0";
-                    }, 1500);
+                    status.innerText = "ERRORE_LOGICA";
+                    key.value = "";
                 }
             }
         });
