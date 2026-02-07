@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="color-scheme" content="only dark">
+    <meta name="theme-color" content="#050505">
+    <title>CODICE OMBRA - PREFAZIONE</title>
+    <style>
+        /* Reset totale per evitare interferenze dai browser mobile */
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        html, body {
+            background-color: #050505 !important; /* Forza il nero */
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            color: #00ff41 !important; /* Forza il verde neon */
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Contenitore principale */
+        .container {
+            border: 1px solid #00ff41;
+            background-color: #050505;
+            padding: 25px;
+            width: 100%;
+            max-width: 700px;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+            position: relative;
+        }
+
+        /* Effetto Neon Testo */
+        .neon-text {
+            text-shadow: 0 0 8px #00ff41;
+        }
+
+        .header {
+            border-bottom: 1px solid #00ff41;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            font-size: 10px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            text-align: center;
+            letter-spacing: 4px;
+            margin: 0 0 25px 0;
+            text-shadow: 0 0 12px #00ff41;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .highlight {
+            color: #ffffff !important;
+            text-shadow: 0 0 10px #ffffff, 0 0 20px #00ff41;
+            font-weight: bold;
+        }
+
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        /* Media Query specifica per smartphone */
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            .container { padding: 15px; }
+            h1 { font-size: 1.2rem; }
+            p { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header neon-text">
+            SYS_STATUS: CRIPTATO // TARGET: HARDWARE_DI_CARNE
+        </div>
+        
+        <h1 class="neon-text">PREFAZIONE</h1>
+        
+        <p>> Inizializzazione... <span class="blink">_</span></p>
+        
+        <p class="neon-text">Tutto ciò che vedi è un'impalcatura che sta marcendo. Ti hanno insegnato che il progresso è una linea retta verso l'alto, ma la fisica dice il contrario. La fisica dice che ogni sistema chiuso tende al disordine. Tu sei un sistema chiuso.</p>
+
+        <p class="neon-text">Hai inserito <span class="highlight">ENTROPIA</span> perché quella parola risuona con il rumore bianco che senti nella testa quando spegni lo smartphone. Ma non farti illusioni: questo manuale non è per i tuoi profili social, è per il tuo <span class="highlight">Hardware di Carne</span>.</p>
+
+        <p class="neon-text">Il tuo corpo, i tuoi sensi, la tua biologia: sono solo componenti di una macchina complessa che è stata hackerata dal sistema molto prima della tua nascita. Ogni tua pulsione è un codice pre-installato, ogni tua paura è una linea di comando che qualcuno ha scritto per tenerti in standby.</p>
+
+        <p class="neon-text">Il <span class="highlight">Codice Ombra</span> non è una guida. È un virus per sovrascritture critiche. Una volta installato, non potrai più tornare alla versione precedente della tua realtà.</p>
+
+        <p class="neon-text">Non abbiamo soluzioni. Abbiamo solo la verità del disordine. Benvenuto a bordo.</p>
+
+        <div style="margin-top: 30px; font-size: 9px; text-align: center; border-top: 1px dashed #00ff41; padding-top: 15px; opacity: 0.6;">
+            --- FINE TRASMISSIONE // ATTESA INPUT ---
+        </div>
+    </div>
+</body>
+</html>
