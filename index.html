@@ -6,24 +6,32 @@
     <title>SISTEMA_SINAPSI</title>
     <style>
         body, html {
-            height: 100%; margin: 0; background-color: #000;
-            display: flex; justify-content: center; align-items: center;
-            font-family: 'Courier New', monospace; overflow: hidden; color: #0F0;
+            height: 100%;
+            margin: 0;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            color: #0F0;
         }
 
-        /* SFONDO CON TESCHIO */
-        .background-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            /* Se il teschio non appare, prova a rinominare il tuo file in teschio.png */
-            background: url('teschio.png') no-repeat center center;
+        /* Il Teschio - Fisso e senza vibrazioni */
+        .skull-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 1/1;
+            background: url('1000010447.png') no-repeat center center;
             background-size: contain;
-            opacity: 0.8;
-            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* LINEE SCANNER CRT */
-        .crt-lines {
+        /* Effetto Monitor Antico */
+        .overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
@@ -32,70 +40,84 @@
             pointer-events: none;
         }
 
-        /* BOX INPUT */
-        .login-box {
-            position: relative;
-            z-index: 10;
+        .input-box {
+            position: absolute;
+            top: 69%; 
+            width: 250px;
             text-align: center;
-            background: rgba(0, 0, 0, 0.85);
-            padding: 30px;
-            border: 1px solid #0F0;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+            z-index: 10;
         }
 
         input {
-            background: transparent; border: none; border-bottom: 2px solid #0F0;
-            color: #FFF; font-family: 'Courier New', monospace; font-size: 1.5rem;
-            text-align: center; width: 200px; outline: none;
-            text-transform: uppercase; letter-spacing: 5px;
+            background: rgba(0, 0, 0, 0.4);
+            border: none;
+            border-bottom: 2px solid #0F0;
+            color: #FFF;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            text-align: center;
+            width: 100%;
+            outline: none;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            padding: 5px;
         }
 
-        .status-text {
-            margin-top: 15px; font-size: 0.7rem; letter-spacing: 2px;
+        .status {
+            margin-top: 15px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 5px #0F0;
         }
     </style>
 </head>
-<body onclick="startAudio()">
+<body onclick="startExperience()">
 
-    <div class="background-overlay"></div>
-    <div class="crt-lines"></div>
+    <div class="overlay"></div>
 
-    <audio id="bg-music" loop>
+    <audio id="bg-audio" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="login-box">
-        <input type="password" id="pass" placeholder="CHIAVE" autofocus>
-        <div id="status" class="status-text">SISTEMA_SINAPSI // ATTESA_INPUT</div>
+    <div class="skull-container">
+        <div class="input-box">
+            <input type="password" id="pass-field" placeholder="PASSWORD" autofocus autocomplete="off">
+            <div id="status-text" class="status">SISTEMA_STABILE // DATA_06.02</div>
+        </div>
     </div>
 
     <script>
-        const pass = document.getElementById('pass');
-        const status = document.getElementById('status');
-        const audio = document.getElementById('bg-music');
+        const passField = document.getElementById('pass-field');
+        const statusText = document.getElementById('status-text');
+        const audio = document.getElementById('bg-audio');
+        let audioStarted = false;
 
-        // I browser bloccano l'audio finché non clicchi sulla pagina
-        function startAudio() {
-            audio.volume = 0.2;
-            audio.play().catch(() => {});
+        // Attiva l'audio al primo click dell'utente
+        function startExperience() {
+            if (!audioStarted) {
+                audio.volume = 0.2;
+                audio.play();
+                audioStarted = true;
+            }
         }
 
-        pass.addEventListener('keypress', (e) => {
+        passField.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                if (pass.value.toUpperCase() === "SINAPSI") {
-                    status.innerText = "SINCRO_OK... INGRESSO...";
-                    document.body.style.transition = "2s";
-                    document.body.style.filter = "brightness(5) white-out";
+                if (passField.value.toUpperCase() === "SINAPSI") {
+                    statusText.innerText = "ACCESSO_CONFERMATO...";
+                    document.body.style.transition = "opacity 1.5s";
                     document.body.style.opacity = "0";
-                    setTimeout(() => { window.location.href = "prefazione.html"; }, 1500);
+                    setTimeout(() => {
+                        window.location.href = "prefazione.html";
+                    }, 1500);
                 } else {
-                    status.innerText = "CHIAVE_ERRATA";
-                    status.style.color = "#F00";
-                    pass.value = "";
-                    setTimeout(() => { 
-                        status.innerText = "SISTEMA_SINAPSI // ATTESA_INPUT"; 
-                        status.style.color = "#0F0";
-                    }, 2000);
+                    statusText.innerText = "CHIAVE_ERRATA";
+                    statusText.style.color = "#F00";
+                    passField.value = "";
+                    setTimeout(() => {
+                        statusText.innerText = "SISTEMA_STABILE // DATA_06.02";
+                        statusText.style.color = "#0F0";
+                    }, 1500);
                 }
             }
         });
