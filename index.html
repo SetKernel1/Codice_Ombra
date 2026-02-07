@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TERMINALE_SINAPSI</title>
+    <title>CORE_SISTEMA</title>
     <style>
         body, html {
             height: 100%; margin: 0; background-color: #000;
@@ -11,106 +11,99 @@
             font-family: 'Courier New', monospace; overflow: hidden; color: #0F0;
         }
 
-        /* Sfondo a griglia tecnica */
-        .bg-grid {
+        /* Canvas per la pioggia di dati */
+        #matrix-canvas {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 255, 0, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 0, 0.05) 1px, transparent 1px);
-            background-size: 30px 30px;
-            z-index: 1;
+            z-index: 1; opacity: 0.3;
         }
 
-        /* Effetto Scanline CRT */
-        .crt-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
-            background-size: 100% 4px;
-            z-index: 5; pointer-events: none;
-        }
-
-        /* Contenitore Centrale */
-        .terminal-container {
+        /* Interfaccia centrale */
+        .terminal-interface {
             position: relative; z-index: 10;
-            width: 90%; max-width: 400px;
-            padding: 40px; border: 1px solid #0F0;
-            background: rgba(0, 20, 0, 0.9);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
-            text-align: center;
+            text-align: center; width: 100%;
         }
 
-        .header {
-            font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 30px;
-            border-bottom: 1px solid #0F0; padding-bottom: 10px;
+        .scanner-line {
+            width: 80%; max-width: 400px; height: 2px;
+            background-color: #0F0; margin: 20px auto;
+            box-shadow: 0 0 15px #0F0;
         }
 
         input {
-            background: transparent; border: none; border-bottom: 2px solid #0F0;
-            color: #FFF; font-family: 'Courier New', monospace; font-size: 1.5rem;
+            background: transparent; border: none; color: #FFF;
+            font-family: 'Courier New', monospace; font-size: 1.8rem;
             text-align: center; width: 100%; outline: none;
-            text-transform: uppercase; letter-spacing: 10px; padding: 10px 0;
-            margin-bottom: 20px;
+            text-transform: uppercase; letter-spacing: 8px;
+            margin-bottom: 10px;
         }
 
-        .status-log {
-            font-size: 0.7rem; color: #0F0; text-align: left;
-            height: 60px; overflow: hidden; line-height: 1.5;
+        .status-msg {
+            font-size: 0.8rem; letter-spacing: 3px;
+            text-shadow: 0 0 5px #0F0;
         }
-
-        /* Animazione pulsante per il bordo */
-        @keyframes pulse {
-            0% { box-shadow: 0 0 10px rgba(0, 255, 0, 0.2); }
-            50% { box-shadow: 0 0 25px rgba(0, 255, 0, 0.5); }
-            100% { box-shadow: 0 0 10px rgba(0, 255, 0, 0.2); }
-        }
-        .terminal-container { animation: pulse 4s infinite; }
-
     </style>
 </head>
-<body onclick="unlockAudio()">
+<body onclick="startAudio()">
 
-    <div class="bg-grid"></div>
-    <div class="crt-overlay"></div>
+    <canvas id="matrix-canvas"></canvas>
 
-    <audio id="ambient-drone" loop>
+    <audio id="ambient" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="terminal-container">
-        <div class="header">CORE_IDENTIFICATION_SYSTEM</div>
-        
-        <input type="password" id="access-key" placeholder="****" autofocus>
-        
-        <div class="status-log" id="log">
-            > ATTESA_INPUT...<br>
-            > PROTOCOLLO: SINAPSI_V.1.0<br>
-            > STATO: CRITTOGRAFATO
-        </div>
+    <div class="terminal-interface">
+        <input type="password" id="access" placeholder="PASSWORD" autofocus autocomplete="off">
+        <div class="scanner-line"></div>
+        <div id="status" class="status-msg">SISTEMA_ATTIVO // SCAN_NEURALE_IN_CORSO</div>
     </div>
 
     <script>
-        const input = document.getElementById('access-key');
-        const log = document.getElementById('log');
-        const audio = document.getElementById('ambient-drone');
+        // Effetto Matrix
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-        function unlockAudio() {
-            audio.volume = 0.15;
+        const letters = "01";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+        for (let i = 0; i < columns; i++) drops[i] = 1;
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0F0";
+            ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 50);
+
+        // Audio e Password
+        const input = document.getElementById('access');
+        const status = document.getElementById('status');
+        const audio = document.getElementById('ambient');
+
+        function startAudio() {
+            audio.volume = 0.2;
             audio.play().catch(() => {});
         }
 
         input.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 if (input.value.toUpperCase() === "SINAPSI") {
-                    log.innerHTML = "> CHIAVE_VALIDA<br>> DECRIPTAZIONE_IN_CORSO...<br>> ACCESSO_AUTORIZZATO";
-                    document.body.style.transition = "2s";
-                    document.body.style.filter = "brightness(0)";
-                    setTimeout(() => { window.location.href = "prefazione.html"; }, 2000);
+                    status.innerText = "SINCRO_STABILIZZATA...";
+                    document.body.style.transition = "1s";
+                    document.body.style.opacity = "0";
+                    setTimeout(() => { window.location.href = "prefazione.html"; }, 1000);
                 } else {
-                    log.innerHTML = "> CHIAVE_ERRATA<br>> TENTATIVO_REGISTRATO<br>> ACCESSO_NEGATO";
+                    status.innerText = "ERRORE_DI_CHIAVE";
                     input.value = "";
-                    setTimeout(() => {
-                        log.innerHTML = "> ATTESA_INPUT...<br>> PROTOCOLLO: SINAPSI_V.1.0<br>> STATO: CRITTOGRAFATO";
-                    }, 2000);
                 }
             }
         });
