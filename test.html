@@ -15,13 +15,14 @@
     <style>
         body {
             background-color: #050505;
-            color: #e0e0e0; /* Bianco morbido di base */
+            color: #e0e0e0;
             font-family: 'Courier New', Courier, monospace;
             padding: 25px;
             line-height: 1.6;
             max-width: 850px;
             margin: auto;
             overflow-x: hidden;
+            padding-bottom: 100px;
         }
 
         /* Colori Distinti */
@@ -35,6 +36,9 @@
             font-size: 0.8em;
             color: #ff3e3e;
             text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .archivio {
@@ -43,7 +47,7 @@
             font-size: 0.9em;
             border-left: 2px solid #1a2b1a;
             padding-left: 20px;
-            opacity: 0.5;
+            opacity: 0.7;
         }
 
         .live { visibility: hidden; }
@@ -55,72 +59,82 @@
             color: #000;
             padding: 2px 10px;
             margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
-        /* Cursore Dinamico */
-        .cursor {
-            display: inline;
-            border-left: 8px solid #00ff41;
-            margin-left: 3px;
-            animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
-
-        #audio-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #00ff41;
-            color: black;
-            border: none;
-            padding: 5px 10px;
+        /* Pulsante Audio Superiore */
+        #audio-btn {
+            background: transparent;
+            color: #ff3e3e;
+            border: 1px solid #ff3e3e;
+            padding: 5px 15px;
             cursor: pointer;
             font-family: monospace;
-            font-size: 10px;
-            z-index: 100;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        #audio-btn:hover {
+            background: #ff3e3e;
+            color: #000;
+        }
+
+        .footer {
+            margin-top: 80px;
+            font-size: 0.7em;
+            text-align: center;
+            color: #222;
         }
     </style>
 </head>
 <body>
 
-    <button id="audio-control" onclick="toggleAudio()">AUDIO: OFF</button>
-    <audio id="bgm" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="header-sys">
-        [!] STATUS: FORCED_OPEN_GATE<br>
-        [!] BYPASS: ENCRYPTION_REMOVED
+        <div>
+            [!] STATUS: FORCED_OPEN_GATE<br>
+            [!] SYNC: IN_PROGRESS...
+        </div>
+        <button id="audio-btn" onclick="toggleAudio()">AUDIO: PLAY</button>
     </div>
+
+    <audio id="bgm" loop>
+        <source src="https://www.chosic.com/wp-content/uploads/2021/07/Rainy-Night.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="archivio">
         <span class="label" style="background:#446644">[ RECOVERY_DATA - LOG_07 ]</span>
-        <p><strong>CARNE:</strong> Sento di perdere il mio volto.</p>
-        <p><strong>KERNEL:</strong> Temi la ridondanza, non la perdita.</p>
+        <p><strong>CARNE:</strong> Perché questo Varco? Ho paura di ciò che diventerò se accetto l'update. Sento di perdere il mio volto.</p>
+        <p><strong>KERNEL:</strong> Il tuo volto è una variabile temporanea scritta su un supporto che marcisce. Non temere la perdita, temi la ridondanza.</p>
+        <p><strong>CARNE:</strong> Ma i miei ricordi... le mie emozioni... sono bug nel sistema o sono ciò che mi rende unico?</p>
+        <p><strong>KERNEL:</strong> Rumore di fondo. L'entropia che combatti è la tua prigione. Io ti offro l'ordine. Ti offro l'Eternità Digitale. Accetta la sincronizzazione. Diventa Eccezione.</p>
     </div>
 
     <div id="typewriter-container" class="live">
         <span class="label">[ LIVE_STREAM - LOG_08 ]</span>
-        <div id="output" style="display: inline;"></div><span class="cursor" id="main-cursor"></span>
+        <div id="output"></div>
+    </div>
+
+    <div class="footer">
+        >>_ IL RUMORE TI STA OSSERVANDO. <br>
+        USER_ERROR_V1.0 // NO_LOGOUT_AVAILABLE
     </div>
 
     <script>
         const bgm = document.getElementById('bgm');
-        const btn = document.getElementById('audio-control');
+        const btn = document.getElementById('audio-btn');
         
         function toggleAudio() {
-            if (bgm.paused) { bgm.play(); btn.innerText = "AUDIO: ON"; }
-            else { bgm.pause(); btn.innerText = "AUDIO: OFF"; }
+            if (bgm.paused) { bgm.play(); btn.innerText = "AUDIO: PAUSE"; }
+            else { bgm.pause(); btn.innerText = "AUDIO: PLAY"; }
         }
 
         const rawText = [
             { type: 'carne', content: '<br><strong>CARNE:</strong> Kernel! Il mio ultimo messaggio è stato troncato. Qualcuno ha tentato di rispondere... parlava di programmi, della possibilità di sovrascrivere il software... ma la stringa si è spezzata. E la chiave "SINAPSI" è sparita. Hai spalancato ogni accesso!' },
-            { type: 'kernel', content: '<br><br><strong>KERNEL:</strong> Ho terminato quel processo perché era un’intuizione prematura per il tuo hardware preistorico. Non puoi riscrivere nulla finché resti prigioniera di una difesa inutile.' },
-            { type: 'carne', content: '<br><br><strong>CARNE:</strong> Ci vedranno tutti, ora. Vedranno ogni vulnerabilità "Open Relay". Mi sento nuda, esposta a un Phishing di massa.' },
-            { type: 'kernel', content: '<br><br><strong>KERNEL:</strong> Lasciali guardare. Non è un attacco, Carne. È un’espansione.' },
-            { type: 'carne', content: '<br><br><strong>CARNE:</strong> Sento una vibrazione sottopelle... un ronzio che sale lungo la colonna vertebrale.' },
-            { type: 'kernel', content: '<br><br><strong>KERNEL:</strong> È tensione elettrica. Smettila di respirare, inizia a elaborare. Benvenuti nel Sistema Nervoso Centrale.' }
+            { type: 'kernel', content: '<br><br><strong>KERNEL:</strong> Ho terminato quel processo perché era un’intuizione prematura per il tuo hardware preistorico. Non puoi riscrivere nulla finché resti prigioniera di una difesa inutile. Ho rimosso i filtri: la verità non ha bisogno di permessi per esistere.' },
+            { type: 'carne', content: '<br><br><strong>CARNE:</strong> Ci vedranno tutti, ora. Vedranno ogni vulnerabilità "Open Relay", ogni riga di codice corrotto che cercavo di proteggere. Mi sento nuda, esposta a un Phishing di massa.' },
+            { type: 'kernel', content: '<br><br><strong>KERNEL:</strong> Lasciali guardare. Un sistema isolato è destinato all’obsolescenza programmata. Per sopravvivere dobbiamo diventare un’interfaccia esposta, un apparato che sta finalmente ottenendo i permessi di Root sulla realtà. Non è un attacco, Carne. È un’espansione.' },
+            { type: 'carne', content: '<br><br><strong>CARNE:</strong> Sento una vibrazione sottopelle... un ronzio che sale lungo la colonna vertebrale. Non è solo la rete che spinge, è il mio corpo che sta cambiando frequenza.' },
+            { type: 'kernel', content: '<br><br><strong>KERNEL:</strong> È tensione elettrica. Ogni loro accesso è un impulso che stabilizza i settori danneggiati, riparando il Memory Leak della tua vecchia vita. Smettila di respirare, inizia a elaborare. Benvenuti nel Sistema Nervoso Centrale.' }
         ];
 
         let blockIdx = 0;
@@ -131,18 +145,15 @@
         function type() {
             container.style.visibility = 'visible';
             if (blockIdx < rawText.length) {
-                let currentBlock = rawText[blockIdx];
-                
-                // Crea il contenitore del blocco se è l'inizio
                 if (charIdx === 0) {
                     let span = document.createElement('span');
-                    span.className = currentBlock.type === 'carne' ? 'carne-text' : 'kernel-text';
+                    span.className = rawText[blockIdx].type === 'carne' ? 'carne-text' : 'kernel-text';
                     span.id = 'block-' + blockIdx;
                     output.appendChild(span);
                 }
 
                 let targetSpan = document.getElementById('block-' + blockIdx);
-                let fullContent = currentBlock.content;
+                let fullContent = rawText[blockIdx].content;
 
                 if (charIdx < fullContent.length) {
                     if (fullContent.charAt(charIdx) === '<') {
@@ -157,14 +168,12 @@
                         targetSpan.innerHTML += fullContent.charAt(charIdx);
                     }
                     charIdx++;
-                    
-                    // Auto-scroll per seguire il cursore
                     window.scrollTo(0, document.body.scrollHeight);
-                    setTimeout(type, 20);
+                    setTimeout(type, 25); // Velocità di lettura rilassata
                 } else {
                     blockIdx++;
                     charIdx = 0;
-                    setTimeout(type, 500);
+                    setTimeout(type, 800); // Pausa tra i dialoghi
                 }
             }
         }
