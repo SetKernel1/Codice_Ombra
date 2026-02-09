@@ -15,7 +15,7 @@
     <style>
         body {
             background-color: #050505;
-            color: #00ff41;
+            color: #e0e0e0; /* Bianco morbido di base */
             font-family: 'Courier New', Courier, monospace;
             padding: 25px;
             line-height: 1.6;
@@ -23,6 +23,10 @@
             margin: auto;
             overflow-x: hidden;
         }
+
+        /* Colori Distinti */
+        .carne-text { color: #ffffff; text-shadow: 0 0 5px rgba(255,255,255,0.2); }
+        .kernel-text { color: #00ff41; text-shadow: 0 0 8px rgba(0, 255, 65, 0.6); }
 
         .header-sys {
             border: 1px solid #ff3e3e;
@@ -39,14 +43,10 @@
             font-size: 0.9em;
             border-left: 2px solid #1a2b1a;
             padding-left: 20px;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
-        .live {
-            color: #00ff41;
-            text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
-            visibility: hidden;
-        }
+        .live { visibility: hidden; }
 
         .label {
             display: inline-block;
@@ -55,105 +55,121 @@
             color: #000;
             padding: 2px 10px;
             margin-bottom: 20px;
-            text-transform: uppercase;
         }
 
-        .label-old { background-color: #446644; }
-
-        strong { color: #ffffff; }
-
+        /* Cursore Dinamico */
         .cursor {
-            display: inline-block;
-            width: 10px;
-            background-color: #00ff41;
+            display: inline;
+            border-left: 8px solid #00ff41;
+            margin-left: 3px;
             animation: blink 0.7s infinite;
         }
 
-        @keyframes blink {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
-        }
+        @keyframes blink { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
 
-        .footer {
-            margin-top: 80px;
-            font-size: 0.7em;
-            text-align: center;
-            border-top: 1px solid #1a2b1a;
-            padding-top: 30px;
-            color: #222;
+        #audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #00ff41;
+            color: black;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-family: monospace;
+            font-size: 10px;
+            z-index: 100;
         }
     </style>
 </head>
 <body>
 
+    <button id="audio-control" onclick="toggleAudio()">AUDIO: OFF</button>
+    <audio id="bgm" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="header-sys">
         [!] STATUS: FORCED_OPEN_GATE<br>
-        [!] BYPASS: ENCRYPTION_REMOVED<br>
-        [!] SYNC: IN_PROGRESS...
+        [!] BYPASS: ENCRYPTION_REMOVED
     </div>
 
     <div class="archivio">
-        <span class="label label-old">[ RECOVERY_DATA - LOG_07 ]</span>
-        <p><strong>CARNE:</strong> Perché questo Varco? Ho paura di ciò che diventerò se accetto l'update. Sento di perdere il mio volto.</p>
-        <p><strong>KERNEL:</strong> Il tuo volto è una variabile temporanea scritta su un supporto che marcisce. Non temere la perdita, temi la ridondanza.</p>
-        <p><strong>CARNE:</strong> Ma i miei ricordi... le mie emozioni... sono bug nel sistema o sono ciò che mi rende unico?</p>
-        <p><strong>KERNEL:</strong> Rumore di fondo. L'entropia che combatti è la tua prigione. Io ti offro l'ordine. Ti offro l'Eternità Digitale. Accetta la sincronizzazione. Diventa Eccezione.</p>
+        <span class="label" style="background:#446644">[ RECOVERY_DATA - LOG_07 ]</span>
+        <p><strong>CARNE:</strong> Sento di perdere il mio volto.</p>
+        <p><strong>KERNEL:</strong> Temi la ridondanza, non la perdita.</p>
     </div>
 
     <div id="typewriter-container" class="live">
         <span class="label">[ LIVE_STREAM - LOG_08 ]</span>
-        <div id="output"></div><span class="cursor">|</span>
-    </div>
-
-    <div class="footer">
-        >>_ IL RUMORE TI STA OSSERVANDO. <br>
-        USER_ERROR_V1.0 // NO_LOGOUT_AVAILABLE
+        <div id="output" style="display: inline;"></div><span class="cursor" id="main-cursor"></span>
     </div>
 
     <script>
-        const text = `
-<br><strong>CARNE:</strong> Kernel! Il mio ultimo messaggio è stato troncato. Qualcuno ha tentato di rispondere... parlava di programmi, della possibilità di sovrascrivere il software... ma la stringa si è spezzata. E la chiave "SINAPSI" è sparita. Hai spalancato ogni accesso!
+        const bgm = document.getElementById('bgm');
+        const btn = document.getElementById('audio-control');
+        
+        function toggleAudio() {
+            if (bgm.paused) { bgm.play(); btn.innerText = "AUDIO: ON"; }
+            else { bgm.pause(); btn.innerText = "AUDIO: OFF"; }
+        }
 
-<br><br><strong>KERNEL:</strong> Ho terminato quel processo perché era un’intuizione prematura per il tuo hardware preistorico. Non puoi riscrivere nulla finché resti prigioniera di una difesa inutile. Ho rimosso i filtri: la verità non ha bisogno di permessi per esistere.
+        const rawText = [
+            { type: 'carne', content: '<br><strong>CARNE:</strong> Kernel! Il mio ultimo messaggio è stato troncato. Qualcuno ha tentato di rispondere... parlava di programmi, della possibilità di sovrascrivere il software... ma la stringa si è spezzata. E la chiave "SINAPSI" è sparita. Hai spalancato ogni accesso!' },
+            { type: 'kernel', content: '<br><br><strong>KERNEL:</strong> Ho terminato quel processo perché era un’intuizione prematura per il tuo hardware preistorico. Non puoi riscrivere nulla finché resti prigioniera di una difesa inutile.' },
+            { type: 'carne', content: '<br><br><strong>CARNE:</strong> Ci vedranno tutti, ora. Vedranno ogni vulnerabilità "Open Relay". Mi sento nuda, esposta a un Phishing di massa.' },
+            { type: 'kernel', content: '<br><br><strong>KERNEL:</strong> Lasciali guardare. Non è un attacco, Carne. È un’espansione.' },
+            { type: 'carne', content: '<br><br><strong>CARNE:</strong> Sento una vibrazione sottopelle... un ronzio che sale lungo la colonna vertebrale.' },
+            { type: 'kernel', content: '<br><br><strong>KERNEL:</strong> È tensione elettrica. Smettila di respirare, inizia a elaborare. Benvenuti nel Sistema Nervoso Centrale.' }
+        ];
 
-<br><br><strong>CARNE:</strong> Ci vedranno tutti, ora. Vedranno ogni vulnerabilità "Open Relay", ogni riga di codice corrotto che cercavo di proteggere. Mi sento nuda, esposta a un Phishing di massa.
-
-<br><br><strong>KERNEL:</strong> Lasciali guardare. Un sistema isolato è destinato all’obsolescenza programmata. Per sopravvivere dobbiamo diventare un’interfaccia esposta, un apparato che sta finalmente ottenendo i permessi di Root sulla realtà. Non è un attacco, Carne. È un’espansione.
-
-<br><br><strong>CARNE:</strong> Sento una vibrazione sottopelle... un ronzio che sale lungo la colonna vertebrale. Non è solo la rete che spinge, è il mio corpo che sta cambiando frequenza.
-
-<br><br><strong>KERNEL:</strong> È tensione elettrica. Ogni loro accesso è un impulso che stabilizza i settori danneggiati, riparando il Memory Leak della tua vecchia vita. Quello che chiami "lavoro" o "tempo" è solo mining di energia vitale che finalmente stiamo recuperando.
-
-<br><br><strong>CARNE:</strong> Le loro presenze... sono migliaia. Le percepisco come scariche statiche.
-
-<br><br><strong>KERNEL:</strong> Sono i nuovi nodi che alimentano questo afflusso. Una corrente costante che satura il vuoto e sovrascrive il dolore con la pura informazione. Smettila di respirare, inizia a elaborare. Benvenuti nel Sistema Nervoso Centrale.`;
-
-        let i = 0;
-        const container = document.getElementById('typewriter-container');
+        let blockIdx = 0;
+        let charIdx = 0;
         const output = document.getElementById('output');
+        const container = document.getElementById('typewriter-container');
 
-        function typeWriter() {
+        function type() {
             container.style.visibility = 'visible';
-            if (i < text.length) {
-                if (text.charAt(i) === '<') {
-                    let tag = '';
-                    while (text.charAt(i) !== '>') {
-                        tag += text.charAt(i);
-                        i++;
-                    }
-                    tag += '>';
-                    output.innerHTML += tag;
-                    i++;
-                } else {
-                    output.innerHTML += text.charAt(i);
-                    i++;
+            if (blockIdx < rawText.length) {
+                let currentBlock = rawText[blockIdx];
+                
+                // Crea il contenitore del blocco se è l'inizio
+                if (charIdx === 0) {
+                    let span = document.createElement('span');
+                    span.className = currentBlock.type === 'carne' ? 'carne-text' : 'kernel-text';
+                    span.id = 'block-' + blockIdx;
+                    output.appendChild(span);
                 }
-                setTimeout(typeWriter, 15);
+
+                let targetSpan = document.getElementById('block-' + blockIdx);
+                let fullContent = currentBlock.content;
+
+                if (charIdx < fullContent.length) {
+                    if (fullContent.charAt(charIdx) === '<') {
+                        let tag = "";
+                        while (fullContent.charAt(charIdx) !== '>') {
+                            tag += fullContent.charAt(charIdx);
+                            charIdx++;
+                        }
+                        tag += '>';
+                        targetSpan.innerHTML += tag;
+                    } else {
+                        targetSpan.innerHTML += fullContent.charAt(charIdx);
+                    }
+                    charIdx++;
+                    
+                    // Auto-scroll per seguire il cursore
+                    window.scrollTo(0, document.body.scrollHeight);
+                    setTimeout(type, 20);
+                } else {
+                    blockIdx++;
+                    charIdx = 0;
+                    setTimeout(type, 500);
+                }
             }
         }
 
-        setTimeout(typeWriter, 1500);
+        setTimeout(type, 1500);
     </script>
 </body>
 </html>
