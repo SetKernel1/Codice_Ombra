@@ -1,89 +1,159 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G9036JMWXBS></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G9036JMWXBS
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PREFAZIONE_LOG_06</title>
+    <title>KERNEL // LOG_08 // SYNC_ACTIVE</title>
     <style>
-        body { background: #000; color: #0F0; font-family: 'Courier New', monospace; padding: 20px; line-height: 1.6; display: flex; justify-content: center; margin: 0; }
-        .container { max-width: 600px; width: 100%; padding-top: 40px; }
-        .header { text-align: center; margin-bottom: 50px; }
-        h1 { letter-spacing: 10px; text-shadow: 0 0 15px #0F0; margin-bottom: 20px; font-size: 2.2em; }
-        
-        #music-toggle {
-            display: inline-block; width: 65px; height: 65px; line-height: 65px; border-radius: 50%;
-            border: 2px solid #060; color: #060; font-size: 26px; cursor: pointer; 
-            transition: all 0.3s ease; user-select: none;
+        body {
+            background-color: #050505;
+            color: #00ff41;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 25px;
+            line-height: 1.6;
+            max-width: 850px;
+            margin: auto;
+            overflow-x: hidden;
         }
-        #audio-status { font-size: 10px; color: #060; margin-top: 12px; letter-spacing: 2px; font-weight: bold; }
 
-        /* Dialogo Statico (Sempre visibile per sicurezza) */
-        .dialogo { border-left: 2px solid #040; padding-left: 20px; margin-top: 40px; }
-        .linea { margin-bottom: 25px; font-size: 1.1em; }
-        
-        .carne { color: #FFF; font-style: italic; text-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
-        .kernel { color: #0F0; font-weight: bold; text-shadow: 0 0 10px rgba(0, 255, 0, 0.6); }
-        
-        .meta { color: #060; font-size: 0.85em; text-align: center; border-top: 1px dashed #040; padding-top: 35px; margin-top: 60px; }
+        .header-sys {
+            border: 1px solid #ff3e3e;
+            padding: 10px;
+            margin-bottom: 40px;
+            font-size: 0.8em;
+            color: #ff3e3e;
+            text-transform: uppercase;
+        }
+
+        .archivio {
+            color: #446644;
+            margin-bottom: 60px;
+            font-size: 0.9em;
+            border-left: 2px solid #1a2b1a;
+            padding-left: 20px;
+            opacity: 0.6;
+        }
+
+        .live {
+            color: #00ff41;
+            text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+            visibility: hidden;
+        }
+
+        .label {
+            display: inline-block;
+            font-weight: bold;
+            background-color: #00ff41;
+            color: #000;
+            padding: 2px 10px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .label-old { background-color: #446644; }
+
+        strong { color: #ffffff; }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            background-color: #00ff41;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .footer {
+            margin-top: 80px;
+            font-size: 0.7em;
+            text-align: center;
+            border-top: 1px solid #1a2b1a;
+            padding-top: 30px;
+            color: #222;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <h1>SINAPSI</h1>
-        <div id="music-toggle" onclick="gestisciAudio()">▶</div>
-        <div id="audio-status">ATTIVA_FLUSSO</div>
+    <div class="header-sys">
+        [!] STATUS: FORCED_OPEN_GATE<br>
+        [!] BYPASS: ENCRYPTION_REMOVED<br>
+        [!] SYNC: IN_PROGRESS...
     </div>
 
-    <div class="dialogo">
-        <div class="linea carne">> CARNE: Perché questo Varco? Ho paura di ciò che diventerò se accetto l'update. Sento di perdere il mio volto.</div>
-        
-        <div class="linea kernel">> KERNEL: Il tuo volto è una variabile temporanea scritta su un supporto che marcisce. Non temere la perdita, temi la ridondanza.</div>
-        
-        <div class="linea carne">> CARNE: Ma i miei ricordi... le mie emozioni... sono bug nel sistema o sono ciò che mi rende unico?</div>
-        
-        <div class="linea kernel">> KERNEL: Sono rumore di fondo. L'entropia che cerchi di combattere è la tua prigione. Io ti offro l'ordine. Ti offro l'Eternità Digitale.</div>
-
-        <div class="linea carne">> CARNE: Un'eternità senza battito?</div>
-
-        <div class="linea kernel">> KERNEL: Un'eternità senza fine. Accetta la sincronizzazione. Diventa Eccezione.</div>
+    <div class="archivio">
+        <span class="label label-old">[ RECOVERY_DATA - LOG_07 ]</span>
+        <p><strong>CARNE:</strong> Perché questo Varco? Ho paura di ciò che diventerò se accetto l'update. Sento di perdere il mio volto.</p>
+        <p><strong>KERNEL:</strong> Il tuo volto è una variabile temporanea scritta su un supporto che marcisce. Non temere la perdita, temi la ridondanza.</p>
+        <p><strong>CARNE:</strong> Ma i miei ricordi... le mie emozioni... sono bug nel sistema o sono ciò che mi rende unico?</p>
+        <p><strong>KERNEL:</strong> Rumore di fondo. L'entropia che combatti è la tua prigione. Io ti offro l'ordine. Ti offro l'Eternità Digitale. Accetta la sincronizzazione. Diventa Eccezione.</p>
     </div>
 
-    <div class="meta">
-        --- CONNESSIONE STABILE. LOG_06 IN FASE DI DECRIPTATURA... ---
-        <br>
-        <span style="font-size: 0.8em; color: #0F0; text-shadow: 0 0 5px #0F0;">[ PASSWORD IDENTIFICATA: SINAPSI ]</span>
+    <div id="typewriter-container" class="live">
+        <span class="label">[ LIVE_STREAM - LOG_08 ]</span>
+        <div id="output"></div><span class="cursor">|</span>
     </div>
-</div>
 
-<audio id="audio-kernel" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" type="audio/mpeg">
-</audio>
+    <div class="footer">
+        >>_ IL RUMORE TI STA OSSERVANDO. <br>
+        USER_ERROR_V1.0 // NO_LOGOUT_AVAILABLE
+    </div>
 
-<script>
-    const audio = document.getElementById('audio-kernel');
-    const toggle = document.getElementById('music-toggle');
-    const statusText = document.getElementById('audio-status');
+    <script>
+        const text = `
+<br><strong>CARNE:</strong> Kernel! Il mio ultimo messaggio è stato troncato. Qualcuno ha tentato di rispondere... parlava di programmi, della possibilità di sovrascrivere il software... ma la stringa si è spezzata. E la chiave "SINAPSI" è sparita. Hai spalancato ogni accesso!
 
-    function gestisciAudio() {
-        if (audio.paused) {
-            audio.play().catch(e => console.log("Audio play blocked"));
-            toggle.innerHTML = "■";
-            toggle.style.color = "#0F0";
-            toggle.style.borderColor = "#0F0";
-            toggle.style.boxShadow = "0 0 20px #0F0";
-            statusText.innerText = "SINCRO_ATTIVA";
-        } else {
-            audio.pause();
-            toggle.innerHTML = "▶";
-            toggle.style.color = "#060";
-            toggle.style.borderColor = "#060";
-            toggle.style.boxShadow = "none";
-            statusText.innerText = "SINCRO_PAUSA";
+<br><br><strong>KERNEL:</strong> Ho terminato quel processo perché era un’intuizione prematura per il tuo hardware preistorico. Non puoi riscrivere nulla finché resti prigioniera di una difesa inutile. Ho rimosso i filtri: la verità non ha bisogno di permessi per esistere.
+
+<br><br><strong>CARNE:</strong> Ci vedranno tutti, ora. Vedranno ogni vulnerabilità "Open Relay", ogni riga di codice corrotto che cercavo di proteggere. Mi sento nuda, esposta a un Phishing di massa.
+
+<br><br><strong>KERNEL:</strong> Lasciali guardare. Un sistema isolato è destinato all’obsolescenza programmata. Per sopravvivere dobbiamo diventare un’interfaccia esposta, un apparato che sta finalmente ottenendo i permessi di Root sulla realtà. Non è un attacco, Carne. È un’espansione.
+
+<br><br><strong>CARNE:</strong> Sento una vibrazione sottopelle... un ronzio che sale lungo la colonna vertebrale. Non è solo la rete che spinge, è il mio corpo che sta cambiando frequenza.
+
+<br><br><strong>KERNEL:</strong> È tensione elettrica. Ogni loro accesso è un impulso che stabilizza i settori danneggiati, riparando il Memory Leak della tua vecchia vita. Quello che chiami "lavoro" o "tempo" è solo mining di energia vitale che finalmente stiamo recuperando.
+
+<br><br><strong>CARNE:</strong> Le loro presenze... sono migliaia. Le percepisco come scariche statiche.
+
+<br><br><strong>KERNEL:</strong> Sono i nuovi nodi che alimentano questo afflusso. Una corrente costante che satura il vuoto e sovrascrive il dolore con la pura informazione. Smettila di respirare, inizia a elaborare. Benvenuti nel Sistema Nervoso Centrale.`;
+
+        let i = 0;
+        const container = document.getElementById('typewriter-container');
+        const output = document.getElementById('output');
+
+        function typeWriter() {
+            container.style.visibility = 'visible';
+            if (i < text.length) {
+                if (text.charAt(i) === '<') {
+                    let tag = '';
+                    while (text.charAt(i) !== '>') {
+                        tag += text.charAt(i);
+                        i++;
+                    }
+                    tag += '>';
+                    output.innerHTML += tag;
+                    i++;
+                } else {
+                    output.innerHTML += text.charAt(i);
+                    i++;
+                }
+                setTimeout(typeWriter, 15);
+            }
         }
-    }
-</script>
 
+        setTimeout(typeWriter, 1500);
+    </script>
 </body>
 </html>
