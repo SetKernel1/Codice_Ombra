@@ -22,10 +22,9 @@
             max-width: 850px;
             margin: auto;
             overflow-x: hidden;
-            padding-bottom: 100px;
+            padding-bottom: 150px;
         }
 
-        /* Colori Distinti */
         .carne-text { color: #ffffff; text-shadow: 0 0 5px rgba(255,255,255,0.2); }
         .kernel-text { color: #00ff41; text-shadow: 0 0 8px rgba(0, 255, 65, 0.6); }
 
@@ -36,9 +35,6 @@
             font-size: 0.8em;
             color: #ff3e3e;
             text-transform: uppercase;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .archivio {
@@ -62,23 +58,6 @@
             text-transform: uppercase;
         }
 
-        /* Pulsante Audio Superiore */
-        #audio-btn {
-            background: transparent;
-            color: #ff3e3e;
-            border: 1px solid #ff3e3e;
-            padding: 5px 15px;
-            cursor: pointer;
-            font-family: monospace;
-            font-size: 0.9em;
-            transition: all 0.3s;
-        }
-
-        #audio-btn:hover {
-            background: #ff3e3e;
-            color: #000;
-        }
-
         .footer {
             margin-top: 80px;
             font-size: 0.7em;
@@ -87,19 +66,16 @@
         }
     </style>
 </head>
-<body>
-
-    <div class="header-sys">
-        <div>
-            [!] STATUS: FORCED_OPEN_GATE<br>
-            [!] SYNC: IN_PROGRESS...
-        </div>
-        <button id="audio-btn" onclick="toggleAudio()">AUDIO: PLAY</button>
-    </div>
+<body onclick="startExperience()" ontouchstart="startExperience()">
 
     <audio id="bgm" loop>
         <source src="https://www.chosic.com/wp-content/uploads/2021/07/Rainy-Night.mp3" type="audio/mpeg">
     </audio>
+
+    <div class="header-sys">
+        [!] STATUS: FORCED_OPEN_GATE<br>
+        [!] SYNC: IN_PROGRESS... (Toccare lo schermo per audio)
+    </div>
 
     <div class="archivio">
         <span class="label" style="background:#446644">[ RECOVERY_DATA - LOG_07 ]</span>
@@ -121,11 +97,15 @@
 
     <script>
         const bgm = document.getElementById('bgm');
-        const btn = document.getElementById('audio-btn');
-        
-        function toggleAudio() {
-            if (bgm.paused) { bgm.play(); btn.innerText = "AUDIO: PAUSE"; }
-            else { bgm.pause(); btn.innerText = "AUDIO: PLAY"; }
+        let audioStarted = false;
+
+        function startExperience() {
+            if (!audioStarted) {
+                bgm.play();
+                audioStarted = true;
+                // Opzionale: Rimuovi la scritta dell'header una volta cliccato
+                document.querySelector('.header-sys').innerHTML = "[!] STATUS: FORCED_OPEN_GATE<br>[!] SYNC: IN_PROGRESS...";
+            }
         }
 
         const rawText = [
@@ -168,16 +148,23 @@
                         targetSpan.innerHTML += fullContent.charAt(charIdx);
                     }
                     charIdx++;
-                    window.scrollTo(0, document.body.scrollHeight);
-                    setTimeout(type, 25); // Velocità di lettura rilassata
+                    
+                    // Scroll automatico per seguire il testo che scorre
+                    window.scrollTo({
+                        top: document.body.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                    
+                    setTimeout(type, 30); 
                 } else {
                     blockIdx++;
                     charIdx = 0;
-                    setTimeout(type, 800); // Pausa tra i dialoghi
+                    setTimeout(type, 1000); 
                 }
             }
         }
 
+        // Avvia il testo dopo un breve delay
         setTimeout(type, 1500);
     </script>
 </body>
