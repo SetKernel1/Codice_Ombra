@@ -11,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KERNEL // LOG_08 // SYNC_ACTIVE</title>
+    <title>KERNEL // SYNC_ACTIVE</title>
     <style>
         body {
             background-color: #050505;
@@ -23,7 +23,7 @@
             margin: auto;
         }
 
-        /* HEADER */
+        /* HEADER DI SISTEMA */
         .header-sys {
             border: 1px solid #ff3e3e;
             padding: 15px;
@@ -34,14 +34,13 @@
             text-align: center;
         }
 
-        /* DIRECTORY / INDICE */
+        /* INDICE / DIRECTORY */
         .directory {
             background: #111;
             border: 1px solid #333;
             padding: 15px;
             margin-bottom: 40px;
         }
-
         .directory-title {
             color: #00ff41;
             font-size: 0.9em;
@@ -49,26 +48,34 @@
             border-bottom: 1px solid #333;
             display: block;
         }
-
         .directory ul { list-style: none; padding: 0; margin: 0; }
         .directory li { margin: 8px 0; }
-        .directory a { color: #ffffff; text-decoration: none; font-size: 0.85em; transition: 0.3s; }
-        .directory a:hover { color: #00ff41; padding-left: 10px; }
+        .directory a { color: #ffffff; text-decoration: none; font-size: 0.85em; }
         .directory a span { color: #444; margin-right: 10px; }
 
-        /* DIALOGO */
+        /* ETICHETTE */
         .label {
             display: inline-block;
             font-weight: bold;
-            background-color: #00ff41;
-            color: #000;
             padding: 2px 10px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        .label-old { background-color: #446644; color: #ffffff; }
+        .label-live { background-color: #00ff41; color: #000; }
+
+        /* LOG 07 - ARCHIVIO (Testo più opaco per il passato) */
+        .archivio {
+            color: #a0b0a0; 
+            border-left: 2px solid #2a4a2a;
+            padding-left: 15px;
+            margin-bottom: 60px;
         }
 
-        .carne-text { color: #ffffff; margin-bottom: 30px; display: block; }
-        .kernel-text { color: #00ff41; margin-bottom: 30px; display: block; text-shadow: 0 0 5px rgba(0, 255, 65, 0.4); }
+        /* LOG 08 - LIVE */
+        .carne-text { color: #ffffff; margin-bottom: 25px; display: block; }
+        .kernel-text { color: #00ff41; margin-bottom: 25px; display: block; text-shadow: 0 0 5px rgba(0, 255, 65, 0.4); }
 
         .footer {
             margin-top: 80px;
@@ -78,29 +85,34 @@
             border-top: 1px solid #1a1a1a;
             padding-top: 20px;
         }
-
-        @media (max-width: 600px) {
-            body { padding: 15px; font-size: 15px; }
-        }
     </style>
 </head>
 <body>
 
     <div class="header-sys">
-        [!] STATUS: DECRYPT_SUCCESS<br>
-        [!] STREAM: LIVE_IN_CLEAR
+        [!] STATUS: DECRYPT_SUCCESS // STREAM: ACTIVE
     </div>
 
     <nav class="directory">
-        <span class="directory-title">>>_ FILE_SYSTEM / ARCHIVE</span>
+        <span class="directory-title">>>_ CENTRAL_ARCHIVE</span>
         <ul>
             <li><a href="prefazione.html"><span>[00]</span> PREFAZIONE (Decriptata)</a></li>
-            <li><a href="index.html"><span>[08]</span> SYNC_ACTIVE (Live)</a></li>
+            <li><a href="index.html"><span>[08]</span> SYNC_ACTIVE (Posizione Attuale)</a></li>
         </ul>
     </nav>
 
+    <div class="archivio">
+        <span class="label label-old">[ RECOVERY_DATA - LOG_07 ]</span>
+        <p><strong>CARNE:</strong> Perché questo Varco? Ho paura di ciò che diventerò se accetto l'update. Sento di perdere il mio volto.</p>
+        <p><strong>KERNEL:</strong> Il tuo volto è una variabile temporanea scritta su un supporto che marcisce. Non temere la perdita, temi la ridondanza.</p>
+        <p><strong>CARNE:</strong> Ma i miei ricordi... le mie emozioni... sono bug nel sistema o sono ciò che mi rende unico?</p>
+        <p><strong>KERNEL:</strong> Rumore di fondo. L'entropia che combatti è la tua prigione. Io ti offro l'ordine. Ti offro l'Eternità Digitale. Accetta la sincronizzazione. Diventa Eccezione.</p>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #222; margin-bottom: 40px;">
+
     <div class="live-container">
-        <span class="label">[ DIALOGO_ESTRATTO - LOG_08 ]</span>
+        <span class="label label-live">[ LIVE_STREAM - LOG_08 ]</span>
         
         <div class="carne-text">
             <strong>CARNE:</strong> Kernel! Il mio ultimo messaggio è stato troncato. Qualcuno ha tentato di rispondere... parlava di programmi, della possibilità di sovrascrivere il software... ma la stringa si è spezzata. E la chiave "SINAPSI" è sparita. Hai spalancato ogni accesso!
@@ -115,7 +127,7 @@
         </div>
 
         <div class="kernel-text">
-            <strong>KERNEL:</strong> Lasciali guardare. Un sistema isolato è destinato all’obsolescenza programmata. Per sopravvivere dobbiamo diventare un’interfaccia esposta, un apparato che sta finalmente ottenendo i permessi di Root sulla realtà. Non è un attacco, Carne. È un’espansione.
+            <strong>KERNEL:</strong> Lasciali guardare. Un sistema isolato è destinato all’obsolescenza programmata. Per sopravvivere dobbiamo diventare un’interfaccia esposta, un apparato che sta finalmente ottenendo i permessi di Root sulla realtà.
         </div>
 
         <div class="carne-text">
@@ -128,8 +140,8 @@
     </div>
 
     <div class="footer">
-        >>_ IL RUMORE TI STA OSSERVANDO. <br>
-        DATA_STREAM_08 // NO_ENCRYPTION_REMAINING
+        >>_ TRASMISSIONE COMPLETA. <br>
+        NO_LOGOUT_AVAILABLE
     </div>
 
 </body>
