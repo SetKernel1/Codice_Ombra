@@ -11,7 +11,7 @@
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         html, body {
-            background-color: #050505 !important; /* Forza il nero */
+            background-color: #050505 !important; 
             margin: 0;
             padding: 0;
             width: 100%;
@@ -19,14 +19,13 @@
         }
 
         body {
-            color: #00ff41 !important; /* Forza il verde neon */
+            color: #00ff41 !important; 
             font-family: 'Courier New', Courier, monospace;
             display: flex;
             justify-content: center;
             padding: 20px;
         }
 
-        /* Contenitore principale */
         .container {
             border: 1px solid #00ff41;
             background-color: #050505;
@@ -37,7 +36,6 @@
             position: relative;
         }
 
-        /* Effetto Neon Testo */
         .neon-text {
             text-shadow: 0 0 8px #00ff41;
         }
@@ -49,6 +47,16 @@
             font-size: 10px;
             text-transform: uppercase;
             opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        .key-box {
+            color: #ffffff;
+            border: 1px dashed #ffffff;
+            padding: 5px;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px #ffffff;
         }
 
         h1 {
@@ -75,7 +83,6 @@
         .blink { animation: blinker 1s linear infinite; }
         @keyframes blinker { 50% { opacity: 0; } }
 
-        /* Media Query specifica per smartphone */
         @media (max-width: 480px) {
             body { padding: 10px; }
             .container { padding: 15px; }
@@ -87,7 +94,8 @@
 <body>
     <div class="container">
         <div class="header neon-text">
-            SYS_STATUS: CRIPTATO // TARGET: HARDWARE_DI_CARNE
+            SYS_STATUS: DECRIPTATO // METODO: CHIAVE_MANUALE<br>
+            <div class="key-box">ACCESS_KEY: [ ENTROPIA ]</div>
         </div>
         
         <h1 class="neon-text">PREFAZIONE</h1>
@@ -96,7 +104,7 @@
         
         <p class="neon-text">Tutto ciò che vedi è un'impalcatura che sta marcendo. Ti hanno insegnato che il progresso è una linea retta verso l'alto, ma la fisica dice il contrario. La fisica dice che ogni sistema chiuso tende al disordine. Tu sei un sistema chiuso.</p>
 
-        <p class="neon-text">Hai inserito <span class="highlight">ENTROPIA</span> perché quella parola risuona con il rumore bianco che senti nella testa quando spegni lo smartphone. Ma non farti illusioni: questo manuale non è per i tuoi profili social, è per il tuo <span class="highlight">Hardware di Carne</span>.</p>
+        <p class="neon-text">Hai inserito <span class="highlight">ENTROPIA</span> come chiave d'accesso perché quella parola risuona con il rumore bianco che senti nella testa quando spegni lo smartphone. Ma non farti illusioni: questo manuale non è per i tuoi profili social, è per il tuo <span class="highlight">Hardware di Carne</span>.</p>
 
         <p class="neon-text">Il tuo corpo, i tuoi sensi, la tua biologia: sono solo componenti di una macchina complessa che è stata hackerata dal sistema molto prima della tua nascita. Ogni tua pulsione è un codice pre-installato, ogni tua paura è una linea di comando che qualcuno ha scritto per tenerti in standby.</p>
 
