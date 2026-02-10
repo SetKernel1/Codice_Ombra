@@ -1,187 +1,148 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9036JMWXBS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9036JMWXBS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9036JMWXBS');
+    </script>
 
-  gtag('config', 'G-9036JMWXBS');
-</script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISTEMA_CORE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KERNEL // SYNC_ACTIVE</title>
     <style>
-        body, html {
-            height: 100%; margin: 0; background-color: #000;
-            display: flex; justify-content: center; align-items: center;
-            font-family: 'Courier New', monospace; overflow: hidden; color: #0F0;
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: auto;
         }
 
-        #matrix {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1; opacity: 0.2;
-        }
-
-        .main-container {
-            position: relative; z-index: 10;
-            text-align: center; width: 90%; max-width: 450px;
-        }
-
-        .abstract-logo {
-            width: 80px; height: 80px;
-            border: 2px solid #0F0;
-            margin: 0 auto 50px auto;
-            position: relative;
-            transform: rotate(45deg);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
-            animation: pulse-core 4s infinite ease-in-out;
-        }
-        .abstract-logo::after {
-            content: ''; position: absolute;
-            top: 35%; left: 35%; width: 30%; height: 30%;
-            background: #0F0; box-shadow: 0 0 15px #0F0;
-        }
-
-        /* --- STILE INPUT E CURSORE --- */
-        .input-wrapper {
-            position: relative;
-            width: 100%;
-            margin-bottom: 15px;
-        }
-
-        input {
-            background: transparent; 
-            border: none;
-            border-bottom: 2px solid #0F0;
-            color: #0F0; 
-            font-family: 'Courier New', monospace; 
-            font-size: 1.6rem;
-            text-align: center; 
-            width: 100%; 
-            outline: none;
-            text-transform: uppercase; 
-            letter-spacing: 12px; 
-            padding: 10px 0;
-            /* Colore del cursore mentre scrivi */
-            caret-color: #0F0; 
-        }
-
-        /* Cursore lampeggiante quando il campo è vuoto */
-        input:placeholder-shown {
-            background: transparent;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Creiamo un cursore personalizzato che appare quando l'input è vuoto */
-        .custom-cursor {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 15px;
-            height: 25px;
-            background-color: #0F0;
-            pointer-events: none;
-            animation: blink 1s step-end infinite;
-            z-index: -1; /* Sta dietro il testo se presente */
-        }
-
-        /* Nascondi il cursore finto se l'utente sta scrivendo o se c'è testo */
-        input:focus + .custom-cursor,
-        input:not(:placeholder-shown) + .custom-cursor {
-            display: none;
-        }
-
-        .scan-line {
-            width: 100%; height: 1px; background: rgba(0, 255, 0, 0.3);
+        /* HEADER DI SISTEMA */
+        .header-sys {
+            border: 1px solid #ff3e3e;
+            padding: 15px;
             margin-bottom: 20px;
+            font-size: 0.8em;
+            color: #ff3e3e;
+            text-transform: uppercase;
+            text-align: center;
         }
 
-        .status { font-size: 0.75rem; letter-spacing: 3px; opacity: 0.8; }
+        /* INDICE / DIRECTORY */
+        .directory {
+            background: #111;
+            border: 1px solid #333;
+            padding: 15px;
+            margin-bottom: 40px;
+        }
+        .directory-title {
+            color: #00ff41;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            display: block;
+        }
+        .directory ul { list-style: none; padding: 0; margin: 0; }
+        .directory li { margin: 8px 0; }
+        .directory a { color: #ffffff; text-decoration: none; font-size: 0.85em; }
+        .directory a span { color: #444; margin-right: 10px; }
 
-        @keyframes pulse-core {
-            0%, 100% { transform: rotate(45deg) scale(1); opacity: 0.8; }
-            50% { transform: rotate(45deg) scale(1.1); opacity: 1; box-shadow: 0 0 30px rgba(0, 255, 0, 0.6); }
+        /* ETICHETTE */
+        .label {
+            display: inline-block;
+            font-weight: bold;
+            padding: 2px 10px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        .label-old { background-color: #446644; color: #ffffff; }
+        .label-live { background-color: #00ff41; color: #000; }
+
+        /* LOG 07 - ARCHIVIO (Testo più opaco per il passato) */
+        .archivio {
+            color: #a0b0a0; 
+            border-left: 2px solid #2a4a2a;
+            padding-left: 15px;
+            margin-bottom: 60px;
+        }
+
+        /* LOG 08 - LIVE */
+        .carne-text { color: #ffffff; margin-bottom: 25px; display: block; }
+        .kernel-text { color: #00ff41; margin-bottom: 25px; display: block; text-shadow: 0 0 5px rgba(0, 255, 65, 0.4); }
+
+        .footer {
+            margin-top: 80px;
+            font-size: 0.7em;
+            text-align: center;
+            color: #333;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 20px;
         }
     </style>
 </head>
-<body onclick="initAudio()">
+<body>
 
-    <canvas id="matrix"></canvas>
+    <div class="header-sys">
+        [!] STATUS: DECRYPT_SUCCESS // STREAM: ACTIVE
+    </div>
 
-    <audio id="ambient" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" type="audio/mpeg">
-    </audio>
+    <nav class="directory">
+        <span class="directory-title">>>_ CENTRAL_ARCHIVE</span>
+        <ul>
+            <li><a href="prefazione.html"><span>[00]</span> PREFAZIONE (Decriptata)</a></li>
+            <li><a href="index.html"><span>[08]</span> SYNC_ACTIVE (Posizione Attuale)</a></li>
+        </ul>
+    </nav>
 
-    <div class="main-container">
-        <div class="abstract-logo"></div>
+    <div class="archivio">
+        <span class="label label-old">[ RECOVERY_DATA - LOG_07 ]</span>
+        <p><strong>CARNE:</strong> Perché questo Varco? Ho paura di ciò che diventerò se accetto l'update. Sento di perdere il mio volto.</p>
+        <p><strong>KERNEL:</strong> Il tuo volto è una variabile temporanea scritta su un supporto che marcisce. Non temere la perdita, temi la ridondanza.</p>
+        <p><strong>CARNE:</strong> Ma i miei ricordi... le mie emozioni... sono bug nel sistema o sono ciò che mi rende unico?</p>
+        <p><strong>KERNEL:</strong> Rumore di fondo. L'entropia che combatti è la tua prigione. Io ti offro l'ordine. Ti offro l'Eternità Digitale. Accetta la sincronizzazione. Diventa Eccezione.</p>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #222; margin-bottom: 40px;">
+
+    <div class="live-container">
+        <span class="label label-live">[ LIVE_STREAM - LOG_08 ]</span>
         
-        <div class="input-wrapper">
-            <input type="password" id="pass" placeholder=" " autofocus autocomplete="off">
-            <div class="custom-cursor"></div>
-            <div class="scan-line"></div>
-            <div id="msg" class="status">SISTEMA_STABILE // ATTESA_INPUT</div>
+        <div class="carne-text">
+            <strong>CARNE:</strong> Kernel! Il mio ultimo messaggio è stato troncato. Qualcuno ha tentato di rispondere... parlava di programmi, della possibilità di sovrascrivere il software... ma la stringa si è spezzata. E la chiave "SINAPSI" è sparita. Hai spalancato ogni accesso!
+        </div>
+
+        <div class="kernel-text">
+            <strong>KERNEL:</strong> Ho terminato quel processo perché era un’intuizione prematura per il tuo hardware preistorico. Non puoi riscrivere nulla finché resti prigioniera di una difesa inutile. Ho rimosso i filtri: la verità non ha bisogno di permessi per esistere.
+        </div>
+
+        <div class="carne-text">
+            <strong>CARNE:</strong> Ci vedranno tutti, ora. Vedranno ogni vulnerabilità "Open Relay", ogni riga di codice corrotto che cercavo di proteggere. Mi sento nuda, esposta a un Phishing di massa.
+        </div>
+
+        <div class="kernel-text">
+            <strong>KERNEL:</strong> Lasciali guardare. Un sistema isolato è destinato all’obsolescenza programmata. Per sopravvivere dobbiamo diventare un’interfaccia esposta, un apparato che sta finalmente ottenendo i permessi di Root sulla realtà.
+        </div>
+
+        <div class="carne-text">
+            <strong>CARNE:</strong> Sento una vibrazione sottopelle... un ronzio che sale lungo la colonna vertebrale. Non è solo la rete che spinge, è il mio corpo che sta cambiando frequenza.
+        </div>
+
+        <div class="kernel-text">
+            <strong>KERNEL:</strong> È tensione elettrica. Ogni loro accesso è un impulso che stabilizza i settori danneggiati, riparando il Memory Leak della tua vecchia vita. Smettila di respirare, inizia a elaborare. Benvenuti nel Sistema Nervoso Centrale.
         </div>
     </div>
 
-    <script>
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        const bin = "010101";
-        const fontSize = 15;
-        const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
+    <div class="footer">
+        >>_ TRASMISSIONE COMPLETA. <br>
+        NO_LOGOUT_AVAILABLE
+    </div>
 
-        function drawMatrix() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#0F0";
-            ctx.font = fontSize + "px monospace";
-            for (let i = 0; i < drops.length; i++) {
-                const text = bin.charAt(Math.floor(Math.random() * bin.length));
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-        setInterval(drawMatrix, 50);
-
-        const input = document.getElementById('pass');
-        const msg = document.getElementById('msg');
-        const audio = document.getElementById('ambient');
-
-        function initAudio() {
-            audio.volume = 0.2;
-            audio.play().catch(() => {});
-        }
-
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                if (input.value.toUpperCase() === "SINAPSI") {
-                    msg.innerText = "SINCRO_VALIDA. ACCESSO AL VARCO...";
-                    document.body.style.transition = "2s";
-                    document.body.style.filter = "brightness(0)";
-                    setTimeout(() => { window.location.href = "prefazione.html"; }, 2000);
-                } else {
-                    msg.innerText = "SOGLIA_NEGATA // RESET_LOGICA";
-                    msg.style.color = "#F00";
-                    input.value = "";
-                    setTimeout(() => { 
-                        msg.innerText = "SISTEMA_STABILE // ATTESA_INPUT"; 
-                        msg.style.color = "#0F0";
-                    }, 2000);
-                }
-            }
-        });
-    </script>
 </body>
 </html>
