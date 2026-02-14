@@ -5,31 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KERNEL_OS // MANUALE OPERATIVO</title>
     <style>
-        /* RESET E DEFINIZIONE COLORI CORE */
         * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
         
-        :root {
-            --neon-green: #00ff41;
-            --dark-bg: #000000;
-            --card-bg: #0a0a0a;
-            --text-white: #ffffff;
-            --dim-green: #004411;
-        }
-
         body { 
-            background-color: var(--dark-bg); 
-            color: var(--neon-green); 
+            background-color: #000000 !important; 
+            color: #00ff41 !important; 
             font-family: 'Courier New', Courier, monospace; 
             line-height: 1.6;
         }
 
-        /* NAVBAR FISSA AD ALTA VISIBILITÀ */
+        /* NAVBAR FISSA */
         nav { 
             position: fixed; 
             top: 0; 
             width: 100%; 
-            background: var(--dark-bg); 
-            border-bottom: 2px solid var(--neon-green); 
+            background: #000; 
+            border-bottom: 2px solid #00ff41; 
             z-index: 1000; 
             padding: 15px; 
             display: flex; 
@@ -39,51 +30,50 @@
         }
 
         nav a { 
-            color: var(--neon-green); 
+            color: #00ff41 !important; 
             text-decoration: none; 
-            font-size: 0.9em; 
+            font-size: 0.85em; 
             font-weight: bold; 
-            padding: 6px 12px; 
-            border: 1px solid var(--dim-green); 
+            padding: 6px 10px; 
+            border: 1px solid #004411; 
         }
 
-        nav a:hover { background: var(--neon-green); color: var(--dark-bg); }
+        nav a:hover { background: #00ff41; color: #000 !important; }
 
         .wrapper { max-width: 850px; margin: 120px auto 60px; padding: 20px; }
         
-        /* HEADER BOX */
-        .header-box { border: 2px solid var(--neon-green); padding: 30px; margin-bottom: 50px; text-align: center; }
-        h1 { font-size: 1.8em; margin-bottom: 10px; text-shadow: 0 0 5px var(--neon-green); }
-        h2 { color: var(--text-white); border-bottom: 1px solid var(--neon-green); padding-bottom: 10px; margin-top: 60px; text-transform: uppercase; }
+        .header-box { border: 2px solid #00ff41; padding: 30px; margin-bottom: 50px; text-align: center; background: rgba(0, 255, 65, 0.05); }
+        h1 { font-size: 1.8em; margin-bottom: 10px; text-shadow: 0 0 5px #00ff41; }
+        h2 { color: #ffffff !important; border-bottom: 1px solid #00ff41; padding-bottom: 10px; margin-top: 60px; text-transform: uppercase; }
 
-        .status-label { background: var(--neon-green); color: var(--dark-bg); padding: 4px 12px; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+        .status-label { background: #00ff41; color: #000; padding: 4px 12px; font-weight: bold; display: inline-block; margin-bottom: 20px; }
 
-        /* AZIONE CARDS - CORREZIONE CONTRASTO */
         .action-card { 
-            background: var(--card-bg); 
-            border: 1px dashed var(--neon-green); 
+            background: #0a0a0a; 
+            border: 1px dashed #00ff41; 
             padding: 25px; 
             margin: 25px 0; 
-            color: var(--neon-green); 
+            color: #00ff41 !important; 
         }
 
-        .action-card strong { color: var(--text-white); display: block; margin-bottom: 10px; font-size: 1.1em; }
+        .action-card strong { color: #ffffff !important; display: block; margin-bottom: 10px; }
         
         p { margin: 15px 0; }
-        strong { color: var(--text-white); }
+        strong { color: #ffffff !important; }
 
-        /* LISTE ISTRUZIONI */
         ul { list-style: none; padding-left: 0; }
         li { margin-bottom: 12px; padding-left: 20px; position: relative; }
-        li::before { content: ">"; position: absolute; left: 0; color: var(--neon-green); }
+        li::before { content: ">"; position: absolute; left: 0; color: #00ff41; }
 
-        /* GLOSSARIO */
+        /* GLOSSARIO AGGIORNATO */
         .glossary-table { width: 100%; border-collapse: collapse; margin-top: 30px; }
-        .glossary-table td { border: 1px solid var(--dim-green); padding: 15px; font-size: 0.9em; }
+        .glossary-table td { border: 1px solid #004411; padding: 15px; font-size: 0.9em; vertical-align: top; }
+        .glossary-table td:first-child { color: #ffffff; font-weight: bold; width: 30%; }
 
         @media (max-width: 600px) {
             nav { padding: 10px; }
             .wrapper { margin-top: 180px; }
+            .glossary-table td { font-size: 0.8em; padding: 10px; }
         }
     </style>
 </head>
@@ -94,6 +84,7 @@
     <a href="#cap1">CH_1</a> <a href="#cap2">CH_2</a> <a href="#cap3">CH_3</a>
     <a href="#cap4">CH_4</a> <a href="#cap5">CH_5</a> <a href="#cap6">CH_6</a>
     <a href="#cap7">CH_7</a> <a href="#cap8">CH_8</a> <a href="#cap9">CH_9</a>
+    <a href="#glossario">GLOSSARY</a>
 </nav>
 
 <div class="wrapper">
@@ -105,83 +96,50 @@
 
     <section id="prefazione">
         <h2>PREFAZIONE: IL RISVEGLIO DEL KERNEL</h2>
-        <p>Ti hanno insegnato che sei il pilota di questa macchina. Ti hanno mentito. Sei il passeggero di un veicolo biologico che risponde a istruzioni scritte da altri. Questo manuale è un’operazione di <strong>Hardening di Sistema</strong>.</p>
+        <p>Ti hanno insegnato che sei il pilota di questa macchina. Ti hanno mentito. Sei il passeggero di un veicolo biologico che risponde a istruzioni scritte da altri. La tua personalità è un ammasso di <strong>Bloatware</strong>. Questo manuale è un’operazione di <strong>Hardening di Sistema</strong>.</p>
     </section>
 
     <section id="cap1">
         <h2>CAPITOLO 1: DIFESA PERIMETRALE</h2>
-        <p>Il mondo esterno non è una comunità; è una <strong>Rete Infetta</strong>. Senza un Firewall, la tua CPU è a disposizione dei desideri altrui.</p>
+        <p>Il mondo esterno non è una comunità; è una <strong>Rete Infetta</strong>. Ogni interazione è un tentativo di pacchetto dati di penetrare nel tuo spazio protetto.</p>
         <div class="action-card">
             <strong>AUDIT DEL PERIMETRO:</strong>
             <ul>
                 <li>Identifica il Malware Primario: colui che richiede più attenzione fornendo zero output.</li>
-                <li>Analizza i log delle ultime 5 conversazioni: quante hanno prodotto dati utili?</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="cap4">
-        <h2>CAPITOLO 4: MINING DI RISORSE (SUDO_CASH)</h2>
-        <p>Denaro e tempo sono <strong>Asset di Calcolo</strong>. Il denaro è il comando <strong>Sudo (SuperUser Do)</strong>: lo strumento per dire di no a processi indesiderati.</p>
-        <div class="action-card">
-            <strong>AUDIT DELLE RISORSE:</strong>
-            <ul>
-                <li>Identifica la Spesa Bloatware: analizza tempo e denaro spesi solo per compiacere.</li>
-                <li>Applica il comando <strong>PURGE</strong>: reindirizza quei cicli verso lo studio di una nuova competenza per aggiornare il tuo Firmware.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="cap6">
-        <h2>CAPITOLO 6: MEMORY LEAK (IL PESO DEL PASSATO)</h2>
-        <p>Il <strong>Bug del Rimpianto</strong> è un loop infinito che tenta di cambiare un output già scritto sul disco fisso. Il senso di colpa è il malware più sofisticato mai scritto.</p>
-        <div class="action-card">
-            <strong>GARBAGE COLLECTION:</strong>
-            <ul>
-                <li>Identifica una situazione o una persona che ti fa sentire pesante oggi.</li>
-                <li>Chiediti se quel processo produce un ROI positivo. Se la risposta è NO, esegui il comando <strong>DROP</strong> e smetti di alimentarlo.</li>
-                <li>Guarda il passato come un database di sola lettura: estrai i log, cancella i file corrotti.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="cap8">
-        <h2>CAPITOLO 8: SHUTDOWN (CANCELLAZIONE DELL'EGO)</h2>
-        <p>Lo Shutdown è lo spegnimento dei processi obsoleti. Smetti di difendere la tua immagine sociale. Al riavvio (Cold Boot), il sistema carica solo il Kernel.</p>
-        <div class="action-card">
-            <strong>TEST DELLO SPEGNIMENTO:</strong>
-            <ul>
-                <li>Per le prossime 24 ore, pratica l'invisibilità sociale totale.</li>
-                <li>Non pubblicare dati, non cercare approvazione, non spiegare le tue intenzioni. Senti la chiarezza del Kernel puro.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="cap9">
-        <h2>CAPITOLO 9: PROTOCOLLO DI USCITA</h2>
-        <p>La vita è una licenza software a tempo determinato. Un Host di alto livello punta all'<strong>Uscita Pulita</strong>.</p>
-        <div class="action-card">
-            <strong>COMANDO DI AVVIO:</strong>
-            <ul>
-                <li>Scegli l'obiettivo più ambizioso che il vecchio sistema considerava impossibile.</li>
-                <li>Dividilo in micro-istruzioni logiche ed esegui senza consultare il feedback emotivo della carne.</li>
+                <li>Analizza i log: quante conversazioni hanno prodotto dati utili?</li>
             </ul>
         </div>
     </section>
 
     <section id="glossario">
-        <h2>GLOSSARIO DI SISTEMA</h2>
+        <h2>GLOSSARIO DI SISTEMA COMPLETO</h2>
         <table class="glossary-table">
-            <tr><td><strong>HOST</strong></td><td>L'unità biologica che ospita la coscienza.</td></tr>
-            <tr><td><strong>KERNEL</strong></td><td>Il nucleo della logica pura, priva di bug emotivi.</td></tr>
-            <tr><td><strong>DROP</strong></td><td>Ignorare un pacchetto senza inviare segnali di rifiuto.</td></tr>
+            <tr><td>HOST</td><td>L'unità biologica (corpo e mente) che ospita la coscienza.</td></tr>
+            <tr><td>KERNEL</td><td>Il nucleo della logica pura, privo di interferenze emotive sociali.</td></tr>
+            <tr><td>SUDO</td><td>(SuperUser Do) Agire con permessi di Root; prendere decisioni sovrane e indipendenti.</td></tr>
+            <tr><td>CICLI DI CLOCK</td><td>Le unità di tempo vitale e attenzione dedicata. La tua risorsa più scarsa.</td></tr>
+            <tr><td>DROP</td><td>Ignorare un pacchetto dati o una richiesta senza fornire segnali di spiegazione o rifiuto.</td></tr>
+            <tr><td>MEMORY LEAK</td><td>Consumo inutile di risorse (RAM) per pensieri, rimpianti o legami obsoleti.</td></tr>
+            <tr><td>KILL -9</td><td>Comando per la terminazione forzata e immediata di un processo dannoso o inutile.</td></tr>
+            <tr><td>DATA SANITIZATION</td><td>Pulizia dei ricordi per estrarre la lezione logica eliminando il virus emotivo.</td></tr>
+            <tr><td>COLD BOOT</td><td>Riavvio totale del sistema senza caricare driver o dati dalle sessioni precedenti (azzeramento Ego).</td></tr>
+            <tr><td>BLOATWARE</td><td>Software spazzatura preinstallato dalla società (sensi di colpa, etichetta, obblighi).</td></tr>
+            <tr><td>ROI</td><td>Return on Investment. Il calcolo dell'output utile rispetto all'energia investita in un processo.</td></tr>
         </table>
     </section>
 
-    <div style="margin-top: 80px; text-align: center; border-top: 1px solid var(--dim-green); padding-top: 20px;">
+    <div style="margin-top: 80px; text-align: center; border-top: 1px solid #004411; padding-top: 20px;">
         <p>[ STATUS: SISTEMA COMPILATO E SIGILLATO ]</p>
+        <p>In attesa di nuovi input... <span style="display:inline-block; width:10px; height:1.2em; background:#00ff41; animation:blink 1s infinite; vertical-align:middle;"></span></p>
     </div>
 </div>
+
+<script>
+    /* Blink animation per il cursore */
+    const style = document.createElement('style');
+    style.innerHTML = "@keyframes blink { 50% { opacity: 0; } }";
+    document.head.appendChild(style);
+</script>
 
 </body>
 </html>
