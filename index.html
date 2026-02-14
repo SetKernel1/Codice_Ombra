@@ -3,129 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KERNEL_OS // v1.1.0_STABLE</title>
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KERNEL-OS-TRK"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-KERNEL-OS-TRK');
-    </script>
-
+    <title>KERNEL_OS // MANUALE OPERATIVO</title>
     <style>
-        /* RESET E COLORI BASE */
-        :root { 
-            --neon-green: #00ff41; 
-            --dark-bg: #050505; 
-            --dim-green: #004411; 
-            --warning-red: #ff3e3e; 
-        }
-
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-
+        /* RESET TOTALE PER EVITARE INTERFERENZE */
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        
         body { 
-            background-color: var(--dark-bg); 
-            color: var(--neon-green); 
+            background-color: #000000 !important; 
+            color: #00ff41 !important; 
             font-family: 'Courier New', Courier, monospace; 
-            margin: 0; 
-            padding: 0; 
-            line-height: 1.6; 
+            padding: 0;
+            margin: 0;
         }
 
-        /* NAVBAR FISSA E VISIBILE */
+        /* NAVBAR FISSA AD ALTA VISIBILITÀ */
         nav { 
             position: fixed; 
             top: 0; 
             width: 100%; 
             background: #000; 
-            border-bottom: 2px solid var(--neon-green); 
-            z-index: 100; 
-            padding: 10px; 
+            border-bottom: 2px solid #00ff41; 
+            z-index: 9999; 
+            padding: 15px; 
             display: flex; 
-            flex-wrap: wrap; 
             justify-content: center; 
-            gap: 10px; 
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         nav a { 
-            color: var(--neon-green); 
+            color: #00ff41 !important; 
             text-decoration: none; 
-            font-size: 0.8em; 
             font-weight: bold; 
-            padding: 5px 8px; 
-            border: 1px solid var(--dim-green); 
+            font-size: 14px;
+            border: 1px solid #004411;
+            padding: 5px 10px;
         }
 
-        nav a:hover { background: var(--neon-green); color: #000; }
+        nav a:hover { background: #00ff41; color: #000 !important; }
 
-        /* CONTENITORE PRINCIPALE */
         .wrapper { 
-            max-width: 850px; 
-            margin: 100px auto 50px; 
+            max-width: 800px; 
+            margin: 120px auto 60px; 
             padding: 20px; 
         }
 
-        /* HEADER */
+        /* HEADER BOX */
         .header-box { 
-            border: 2px solid var(--neon-green); 
+            border: 2px solid #00ff41; 
             padding: 30px; 
             margin-bottom: 50px; 
-            background: rgba(0, 255, 65, 0.05); 
-            text-align: center; 
+            text-align: center;
+            background: rgba(0, 255, 65, 0.05);
         }
 
-        .status-alert { 
-            color: #000; 
-            background: var(--neon-green); 
-            padding: 5px 15px; 
-            font-weight: bold; 
-            display: inline-block; 
-            margin-bottom: 15px; 
-        }
+        h1 { font-size: 24px; margin: 15px 0; text-transform: uppercase; }
+        h2 { color: #ffffff !important; border-bottom: 1px solid #00ff41; padding-bottom: 10px; margin-top: 60px; text-transform: uppercase; }
 
-        h1 { font-size: 1.6em; text-shadow: 0 0 10px var(--neon-green); margin: 10px 0; }
-        h2 { color: #fff; border-bottom: 1px solid var(--neon-green); padding-bottom: 5px; margin-top: 60px; text-transform: uppercase; }
+        .status-alert { background: #00ff41; color: #000; padding: 5px 15px; font-weight: bold; display: inline-block; }
 
-        .warning { 
-            color: var(--warning-red); 
-            border: 1px solid var(--warning-red); 
-            padding: 15px; 
-            margin: 20px 0; 
-            font-size: 0.9em; 
-            text-align: left;
-        }
-
-        /* SCHEDE AZIONE (CAPITOLI) */
-        .chapter { margin-bottom: 70px; }
-        
+        /* AZIONE CARDS (CORRETTE PER LEGGIBILITÀ) */
         .action-card { 
             background: #0a0a0a; 
-            border: 1px dashed var(--neon-green); 
+            border: 1px dashed #00ff41; 
             padding: 25px; 
-            margin: 20px 0; 
-            font-size: 0.95em; 
-            position: relative; 
+            margin: 25px 0; 
+            color: #00ff41 !important; /* Forza il verde */
         }
 
-        .action-card::before { 
-            content: "ISTRUZIONE_OPERATIVA"; 
-            position: absolute; 
-            top: -12px; 
-            left: 10px; 
-            background: var(--dark-bg); 
-            padding: 0 10px; 
-            font-size: 0.75em; 
-            font-weight: bold; 
-        }
+        .action-card strong { color: #ffffff !important; display: block; margin-bottom: 10px; }
 
-        /* GLOSSARIO */
-        .glossary-table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            margin-top: 20px; 
-        }
+        .highlight { background: #00ff41; color: #000; padding: 0 5px; font-weight: bold; }
 
-        .glossary-table td { 
-            border: 1px solid var(--dim-green); 
-            padding: 12px
+        p { margin: 15px 0; font-size: 16px; }
+        
+        strong { color: #ffffff !important; }
+
+        ul { list-style: none; }
+        li { margin: 10px 0; padding-left: 15px; border-left: 2px solid #004411; }
+
+        @media (max-width: 600px) {
+            nav { padding: 10px; gap: 5px; }
+            nav a { font-size: 11px; }
+            .wrapper { margin-top: 160px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#prefazione">PREFACE</a>
+    <a href="#cap1">CH_1</a> <a href="#cap4">CH_4</a> <a href="#cap6">CH_6</a>
+    <a href="#cap7">CH_7</a> <a href="#cap8">CH_8</a> <a href="#cap9">CH_9</a>
+</nav>
+
+<div class="wrapper">
+    <div class="header-box">
+        <div class="status-alert">STATUS: DOCUMENTO RISERVATO</div>
+        <h1>KERNEL_OS: MANUALE DI SOVRASCRITTURA BIOLOGICA</h1>
+        <p>Release v1.1.0_STABLE // Privilegi di Root Richiesti</p>
+    </div>
+
+    <section id="prefazione">
+        <h2>PREFAZIONE: IL RISVEGLIO DEL KERNEL</h2>
+        <p>Ti hanno insegnato che sei il pilota di questa macchina. Ti hanno mentito. Sei il passeggero di un veicolo biologico che risponde a istruzioni scritte da altri. La tua personalità è un ammasso di <strong>Bloatware</strong>.</p>
+    </section>
+
+    <section id="cap1">
+        <h2>CAPITOLO 1: DIFESA PERIMETRALE</h2>
+        <p>Il mondo esterno non è una comunità; è una <strong>Rete Infetta</strong>. Senza un Firewall, la tua CPU è a disposizione dei desideri altrui.</p>
+        <div class="action-card">
+            <strong>AUDIT DEL PERIMETRO:</strong>
+            <ul>
+                <li>* Identifica il Malware Primario: colui che richiede più attenzione fornendo zero output.</li>
+                <li>* Analizza i log: quante conversazioni hanno prodotto dati utili?</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="cap4">
+        <h2>CAPITOLO 4: MINING DI RISORSE (SUDO_CASH)</h2>
+        <p>Il denaro è il comando <span class="highlight">Sudo</span>. È lo strumento che ti permette di dire di no a processi indesiderati e acquistare tempo per le tue compilazioni private.</p>
+        <div class="action-card">
+            <strong>AUDIT DELLE RISORSE:</strong>
+            <ul>
+                <li>* Identifica la Spesa Bloatware: tempo e denaro spesi solo per compiacere.</li>
+                <li>* Applica il comando PURGE. Reindirizza i cicli verso l'upgrade del Firmware.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="cap6">
+        <h2>CAPITOLO 6: MEMORY LEAK (IL PESO DEL PASSATO)</h2>
+        <p>Il <strong>Bug del Rimpianto</strong> è un loop infinito che tenta di cambiare un output già scritto sul disco fisso. Il senso di colpa è il malware più sofisticato mai scritto.</p>
+        <div class="action-card">
+            <strong>GARBAGE COLLECTION:</strong>
+            <ul>
+                <li>* Identifica un pensiero o legame morto che ti sottrae energia.</li>
+                <li>* Se non genera ROI oggi, esegui il comando <span class="highlight">DROP</span>.</li>
+                <li>* Guarda il passato come un database di sola lettura.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="cap7">
+        <h2>CAPITOLO 7: DEBUG RELAZIONALE</h2>
+        <p>Le relazioni sono <strong>SaaS (Software as a Service)</strong>. Se la manutenzione diventa troppo costosa, il contratto deve essere rescisso.</p>
+        <div class="action-card">
+            <strong>ANTIVIRUS RUN:</strong>
+            <ul>
+                <li>* Analizza i pacchetti dati dei tuoi contatti: valore o lamentele?</li>
+                <li>* Applica la limitazione di banda ai nodi infetti.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="cap8">
+        <h2>CAPITOLO 8: SHUTDOWN (CANCELLAZIONE DELL'EGO)</h2>
+        <p>Smetti di difendere la tua immagine sociale. Al riavvio (Cold Boot), il sistema carica solo il Kernel puro.</p>
+        <div class="action-card">
+            <strong>TEST DELLO SPEGNIMENTO:</strong>
+            <ul>
+                <li>* Per 24 ore, pratica l'invisibilità sociale.</li>
+                <li>* Non pubblicare dati, non cercare approvazione.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="cap9">
+        <h2>CAPITOLO 9: PROTOCOLLO DI USCITA</h2>
+        <p>La vita è una licenza a tempo determinato. Punta all'<strong>Uscita Pulita</strong> e al Backup nel Cloud (Eredità).</p>
+        <div class="action-card">
+            <strong>COMANDO DI AVVIO:</strong>
+            <ul>
+                <li>* Scegli l'obiettivo "impossibile" e dividilo in micro-istruzioni.</li>
+                <li>* Esegui senza consultare il feedback emotivo (Carne).</li>
+            </ul>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>
