@@ -3,78 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KERNEL_OS // MANUALE OPERATIVO</title>
+    <title>KERNEL_OS // STABLE_BUILD</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-        body { background-color: #000000 !important; color: #00ff41 !important; font-family: 'Courier New', Courier, monospace; line-height: 1.6; }
-        
-        /* NAVBAR */
-        nav { position: fixed; top: 0; width: 100%; background: #000; border-bottom: 2px solid #00ff41; z-index: 9999; padding: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-        nav a { color: #00ff41 !important; text-decoration: none; font-size: 0.7em; font-weight: bold; padding: 5px 8px; border: 1px solid #004411; text-transform: uppercase; }
-        nav a:hover { background: #00ff41; color: #000 !important; }
-
-        .wrapper { max-width: 850px; margin: 140px auto 60px; padding: 20px; }
-        
-        .header-box { border: 2px solid #00ff41; padding: 30px; margin-bottom: 50px; text-align: center; background: rgba(0, 255, 65, 0.05); }
-        h1 { font-size: 1.8em; margin-bottom: 10px; text-shadow: 0 0 5px #00ff41; }
-        h2 { color: #ffffff !important; border-bottom: 1px solid #00ff41; padding-bottom: 10px; margin-top: 70px; text-transform: uppercase; }
-        
-        .status-label { background: #00ff41; color: #000; padding: 4px 12px; font-weight: bold; display: inline-block; margin-bottom: 20px; }
-        
-        /* IL BLOCCO ROSSO RIPRISTINATO */
-        .warning-red { color: #ff3e3e; border: 1px solid #ff3e3e; padding: 15px; margin: 20px 0; font-size: 0.9em; text-align: left; background: rgba(255, 62, 62, 0.1); }
-
-        .action-card { background: #0a0a0a; border: 1px dashed #00ff41; padding: 25px; margin: 25px 0; color: #00ff41 !important; position: relative; }
-        .action-card::before { content: "ISTRUZIONE_OPERATIVA"; position: absolute; top: -12px; left: 10px; background: #000; padding: 0 10px; font-size: 0.8em; font-weight: bold; }
-        .action-card strong { color: #ffffff !important; display: block; margin-bottom: 10px; }
-        
-        p { margin: 15px 0; }
-        strong { color: #ffffff !important; }
-        ul { list-style: none; padding-left: 0; }
-        li { margin-bottom: 12px; padding-left: 20px; position: relative; }
-        li::before { content: ">"; position: absolute; left: 0; color: #00ff41; }
-
-        .glossary-table { width: 100%; border-collapse: collapse; margin: 30px 0; }
-        .glossary-table td { border: 1px solid #004411; padding: 15px; font-size: 0.85em; vertical-align: top; }
-        .glossary-table td:first-child { color: #ffffff; font-weight: bold; width: 30%; }
-
-        .cursor { display:inline-block; width:10px; height:1.2em; background:#00ff41; animation:blink 1s infinite; vertical-align:middle; }
+        body { background: #000 !important; color: #00ff41 !important; font-family: 'Courier New', Courier, monospace; line-height: 1.6; }
+        nav { position: fixed; top: 0; width: 100%; background: #000; border-bottom: 2px solid #00ff41; z-index: 9999; padding: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+        nav a { color: #00ff41 !important; text-decoration: none; font-size: 0.7em; font-weight: bold; padding: 5px; border: 1px solid #004411; }
+        .wrapper { max-width: 800px; margin: 120px auto 50px; padding: 20px; }
+        .header-box { border: 2px solid #00ff41; padding: 20px; text-align: center; margin-bottom: 40px; }
+        .warning-red { color: #ff3e3e; border: 2px solid #ff3e3e; padding: 15px; margin: 20px 0; background: rgba(255, 0, 0, 0.1); font-weight: bold; text-align: left; }
+        h2 { color: #fff; border-bottom: 1px solid #00ff41; margin-top: 50px; padding-bottom: 5px; text-transform: uppercase; }
+        .action-card { background: #0a0a0a; border: 1px dashed #00ff41; padding: 20px; margin: 20px 0; }
+        .action-card b { color: #fff; display: block; margin-bottom: 10px; }
+        .glossary-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .glossary-table td { border: 1px solid #004411; padding: 10px; font-size: 0.8em; }
+        .cursor { display:inline-block; width:8px; height:15px; background:#00ff41; animation: blink 1s infinite; }
         @keyframes blink { 50% { opacity: 0; } }
-
-        @media (max-width: 600px) { nav { padding: 8px; } nav a { font-size: 0.6em; } .wrapper { margin-top: 180px; } }
+        @media (max-width: 600px) { .wrapper { margin-top: 160px; } }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="#prefazione">PREFACE</a>
-    <a href="#cap1">CH_1</a> <a href="#cap2">CH_2</a> <a href="#cap3">CH_3</a>
-    <a href="#cap4">CH_4</a> <a href="#cap5">CH_5</a> <a href="#cap6">CH_6</a>
-    <a href="#cap7">CH_7</a> <a href="#cap8">CH_8</a> <a href="#cap9">CH_9</a>
-    <a href="#glossario">GLOSSARY</a>
+    <a href="#pref">PREFACE</a> <a href="#c1">CH1</a> <a href="#c2">CH2</a> <a href="#c3">CH3</a> 
+    <a href="#c4">CH4</a> <a href="#c5">CH5</a> <a href="#c6">CH6</a> <a href="#c7">CH7</a> 
+    <a href="#c8">CH8</a> <a href="#c9">CH9</a> <a href="#glo">GLOSSARY</a>
 </nav>
 
 <div class="wrapper">
     <div class="header-box">
-        <div class="status-label">STATUS: DOCUMENTO RISERVATO</div>
-        <h1>KERNEL_OS: MANUALE DI SOVRASCRITTURA BIOLOGICA</h1>
-        <p>Release v1.1.0_STABLE // Privilegi di Root Richiesti</p>
-        
+        <p>[ STATUS: ENCRYPTED DOCUMENT ]</p>
+        <h1>KERNEL_OS: SOVRASCRITTURA BIOLOGICA</h1>
         <div class="warning-red">
-            <strong>ATTENZIONE:</strong> L'esecuzione di queste procedure comporterà la perdita definitiva della tua identità precedente. Una volta visto il Codice, la simulazione sociale non potrà più essere riavviata.
+            ATTENZIONE: L'esecuzione di queste procedure comporterà la perdita definitiva della tua identità precedente. La simulazione sociale non potrà più essere riavviata.
         </div>
     </div>
 
-    <section id="prefazione">
-        <h2>PREFAZIONE: IL RISVEGLIO DEL KERNEL</h2>
-        <p>Ti hanno insegnato che sei il pilota di questa macchina. Ti hanno mentito. Sei il passeggero di un veicolo biologico che risponde a istruzioni scritte da altri. La tua personalità è un ammasso di <strong>Bloatware</strong>.</p>
+    <section id="pref">
+        <h2>PREFAZIONE</h2>
+        <p>Sei il passeggero di un veicolo biologico che risponde a istruzioni scritte da altri. La tua personalità è Bloatware.</p>
     </section>
 
-    <section id="cap1">
+    <section id="c1">
         <h2>CAPITOLO 1: DIFESA PERIMETRALE</h2>
-        <p>Il mondo esterno è una <strong>Rete Infetta</strong>. Senza un Firewall, la tua CPU è a disposizione dei desideri altrui.</p>
+        <p>Il mondo è una Rete Infetta. Senza Firewall, la tua CPU è di altri.</p>
         <div class="action-card">
-            <strong>AUDIT DEL PERIMETRO:</strong>
-            <ul>
-                <li>Identifica il Malware Primario: colui che richiede più attenzione fornendo zero output.</li>
-                <li>Analizza i log delle ultime 5 conversazioni: qu
+            <b>OPERAZIONE:</b> Identifica chi richiede attenzione fornendo zero output. Analizza gli ultimi log.
+        </div>
+    </section>
+
+    <section id="c2">
+        <h2>CAPITOLO 2: PROTOCOLLO DROP</h2>
+        <p>La risorsa preziosa sono i Cicli di Clock. Applica il DROP: ignora senza rispondere.</p>
+        <div class="action-card">
+            <b>OPERAZIONE:</b> Per 48 ore, non dare spiegazioni a chi non ha un'agenda chiara.
+        </div>
+    </section>
+
+    <section id="c3">
+        <h2>CAPITOLO 3: GUI VS BACKEND</h2>
+        <p>Il Frontend è apparenza. Il Backend è logica nuda.</p>
+        <div class="action-card">
+            <b>OPERAZIONE:</b> Guarda le persone come terminali. Ignora tono di voce, guarda solo i dati.
+        </div>
+    </section>
+
+    <section id="c4">
+        <h2>CAPITOLO 4: SUDO_CASH</h2>
+        <p>Il denaro è il comando SUDO: il potere di dire di NO.</p>
+        <div class="action-card">
+            <b>OPERAZIONE:</b> Elimina le spese Bloatware fatte per compiacere. Reindirizza al Firmware.
+        </div>
+    </section>
+
+    <section id="c5">
+        <h2>CAPITOLO 5: MANUTENZIONE HARDWARE</h2>
+        <p>Il corpo è il tuo unico server. Se l'hardware rallenta, il firmware deve accelerare.</p>
+        <div class="action-card">
+            <b>OPERAZIONE:</b> Esegui FULL_RESET delle convinzioni ogni 24 mesi.
+        </div>
+    </section>
+
+    <section id="c6">
+        <h2>CAPITOLO 6: MEMORY LEAK</h2>
+        <p>Il rimpianto è un loop infinito. Il senso di colpa è un malware.</p>
+        <div class="action-card">
+            <b>OPERAZIONE:</b> Identifica un legame morto. Se ROI = 0, esegui DROP.
+        </div>
+    </section>
+
+    <section id="c7">
+        <h2>CAPITOLO 7: DEBUG RELAZIONALE</h2>
+        <p>Le relazioni sono SaaS. Se la manutenzione costa troppo, rescindi il contratto.</p>
+        <div class="action-card">
+            <b>OPERAZIONE:</b> Analizza i 5 contatti frequenti. Valore o lamentele? Applica limiti di banda.
+        </div>
+    </section>
+
+    <section id="c8">
+        <h2>CAPITOLO 8: SHUTDOWN EGO</h2>
+        <p>Smetti di difendere la tua immagine. Carica il Kernel puro.</p>
+        <div class="action-card">
+            <b>OPERAZIONE:</b> 24 ore di invisibilità sociale. Nessun post, nessuna spiegazione.
+        </div>
+    </section>
+
+    <section id="c9">
+        <h2>CAPITOLO 9: EXIT PROTOCOL</h2>
+        <p>La vita è una licenza a termine. Punta al Backup (Eredità).</p>
+        <div class="action-card">
+            <b>OPERAZIONE:</b> Dividi l'obiettivo impossibile in micro-istruzioni. Esegui senza emozioni.
+        </div>
+    </section>
+
+    <section id="glo">
+        <h2>GLOSSARIO COMPLETO</h2>
+        <table class="glossary-table">
+            <tr><td>HOST</td><td>Unità biologica corpo/mente.</td></tr>
+            <tr><td>KERNEL</td><td>Nucleo della logica pura.</td></tr>
+            <tr><td>SUDO</td><td>Permessi di Root (potere decisionale).</td></tr>
+            <tr><td>DROP</td><td>Ignorare senza segnali di ritorno.</td></tr>
+            <tr><td>ROI</td><td>Ritorno sull'investimento energetico.</td></tr>
+            <tr><td>BLOATWARE</td><td>Inutilità sociali preinstallate.</td></tr>
+            <tr><td>KILL -9</td><td>Terminazione immediata di un processo.</td></tr>
+            <tr><td>MEMORY LEAK</td><td>Energia persa in processi obsoleti.</td></tr>
+            <tr><td>COLD BOOT</td><td>Riavvio senza ego.</td></tr>
+            <tr><td>DATA SAN</td><td>Pulizia logica dei ricordi.</td></tr>
+            <tr><td>CLOCK</td><td>Tempo vitale.</td></tr>
+        </table>
+    </section>
+
+    <div style="text-align:center; margin-top:50px; border-top:1px solid #004411; padding-top:20px;">
+        <p>SISTEMA COMPILATO. <span class="cursor"></span></p>
+    </div>
+</div>
+
+</body>
+</html>
