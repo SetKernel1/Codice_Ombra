@@ -1,100 +1,59 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KERNEL-OS-TRK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KERNEL-OS-TRK');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KERNEL_OS // MANUALE OPERATIVO</title>
     <style>
-        /* RESET TOTALE PER EVITARE INTERFERENZE */
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        :root { --neon-green: #00ff41; --dark-bg: #050505; --dim-green: #004411; --warning-red: #ff3e3e; }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { background-color: var(--dark-bg); color: var(--neon-green); font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; line-height: 1.6; }
         
-        body { 
-            background-color: #000000 !important; 
-            color: #00ff41 !important; 
-            font-family: 'Courier New', Courier, monospace; 
-            padding: 0;
-            margin: 0;
-        }
+        /* Navigation Bar - High Visibility */
+        nav { position: fixed; top: 0; width: 100%; background: #000; border-bottom: 2px solid var(--neon-green); z-index: 100; padding: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; box-shadow: 0 5px 15px rgba(0, 255, 65, 0.2); }
+        nav a { color: var(--neon-green); text-decoration: none; font-size: 0.8em; font-weight: bold; padding: 5px 8px; border: 1px solid var(--dim-green); }
+        nav a:hover { background: var(--neon-green); color: #000; }
 
-        /* NAVBAR FISSA AD ALTA VISIBILITÀ */
-        nav { 
-            position: fixed; 
-            top: 0; 
-            width: 100%; 
-            background: #000; 
-            border-bottom: 2px solid #00ff41; 
-            z-index: 9999; 
-            padding: 15px; 
-            display: flex; 
-            justify-content: center; 
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        nav a { 
-            color: #00ff41 !important; 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 14px;
-            border: 1px solid #004411;
-            padding: 5px 10px;
-        }
-
-        nav a:hover { background: #00ff41; color: #000 !important; }
-
-        .wrapper { 
-            max-width: 800px; 
-            margin: 120px auto 60px; 
-            padding: 20px; 
-        }
-
-        /* HEADER BOX */
-        .header-box { 
-            border: 2px solid #00ff41; 
-            padding: 30px; 
-            margin-bottom: 50px; 
-            text-align: center;
-            background: rgba(0, 255, 65, 0.05);
-        }
-
-        h1 { font-size: 24px; margin: 15px 0; text-transform: uppercase; }
-        h2 { color: #ffffff !important; border-bottom: 1px solid #00ff41; padding-bottom: 10px; margin-top: 60px; text-transform: uppercase; }
-
-        .status-alert { background: #00ff41; color: #000; padding: 5px 15px; font-weight: bold; display: inline-block; }
-
-        /* AZIONE CARDS (CORRETTE PER LEGGIBILITÀ) */
-        .action-card { 
-            background: #0a0a0a; 
-            border: 1px dashed #00ff41; 
-            padding: 25px; 
-            margin: 25px 0; 
-            color: #00ff41 !important; /* Forza il verde */
-        }
-
-        .action-card strong { color: #ffffff !important; display: block; margin-bottom: 10px; }
-
-        .highlight { background: #00ff41; color: #000; padding: 0 5px; font-weight: bold; }
-
-        p { margin: 15px 0; font-size: 16px; }
+        .wrapper { max-width: 900px; margin: 80px auto 40px; padding: 20px; }
         
-        strong { color: #ffffff !important; }
+        .header-box { border: 2px solid var(--neon-green); padding: 30px; margin-bottom: 50px; background: rgba(0, 255, 65, 0.05); text-align: center; }
+        h1 { font-size: 1.8em; text-shadow: 0 0 10px var(--neon-green); }
+        h2 { color: #fff; border-bottom: 1px solid var(--neon-green); padding-bottom: 5px; margin-top: 50px; text-transform: uppercase; }
+        
+        .status-alert { color: #000; background: var(--neon-green); padding: 5px 15px; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+        .warning { color: var(--warning-red); border: 1px solid var(--warning-red); padding: 15px; margin: 20px 0; font-size: 0.9em; }
 
-        ul { list-style: none; }
-        li { margin: 10px 0; padding-left: 15px; border-left: 2px solid #004411; }
+        .chapter { margin-bottom: 80px; }
+        .action-card { background: #0a0a0a; border: 1px dashed var(--neon-green); padding: 25px; margin: 25px 0; font-size: 0.95em; position: relative; }
+        .action-card::before { content: "ISTRUZIONE_OPERATIVA"; position: absolute; top: -12px; left: 10px; background: var(--dark-bg); padding: 0 10px; font-size: 0.8em; font-weight: bold; }
 
-        @media (max-width: 600px) {
-            nav { padding: 10px; gap: 5px; }
-            nav a { font-size: 11px; }
-            .wrapper { margin-top: 160px; }
-        }
+        .glossary-table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #080808; }
+        .glossary-table td { border: 1px solid var(--dim-green); padding: 12px; font-size: 0.9em; }
+        .glossary-table tr:hover { background: rgba(0, 255, 65, 0.05); }
+
+        .cursor { display: inline-block; width: 10px; height: 1.2em; background: var(--neon-green); animation: blink 1s infinite; vertical-align: middle; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        strong { color: #fff; }
+        @media (max-width: 600px) { nav { font-size: 0.7em; } .wrapper { margin-top: 120px; } }
     </style>
 </head>
 <body>
 
 <nav>
     <a href="#prefazione">PREFACE</a>
-    <a href="#cap1">CH_1</a> <a href="#cap4">CH_4</a> <a href="#cap6">CH_6</a>
+    <a href="#cap1">CH_1</a> <a href="#cap2">CH_2</a> <a href="#cap3">CH_3</a>
+    <a href="#cap4">CH_4</a> <a href="#cap5">CH_5</a> <a href="#cap6">CH_6</a>
     <a href="#cap7">CH_7</a> <a href="#cap8">CH_8</a> <a href="#cap9">CH_9</a>
+    <a href="#glossario">GLOSSARY</a>
 </nav>
 
 <div class="wrapper">
@@ -102,86 +61,115 @@
         <div class="status-alert">STATUS: DOCUMENTO RISERVATO</div>
         <h1>KERNEL_OS: MANUALE DI SOVRASCRITTURA BIOLOGICA</h1>
         <p>Release v1.1.0_STABLE // Privilegi di Root Richiesti</p>
+        <div class="warning">
+            <strong>ATTENZIONE:</strong> L'esecuzione di queste procedure comporterà la perdita definitiva della tua identità precedente. Una volta visto il Codice, la simulazione sociale non potrà più essere riavviata.
+        </div>
     </div>
 
-    <section id="prefazione">
+    <section id="prefazione" class="chapter">
         <h2>PREFAZIONE: IL RISVEGLIO DEL KERNEL</h2>
-        <p>Ti hanno insegnato che sei il pilota di questa macchina. Ti hanno mentito. Sei il passeggero di un veicolo biologico che risponde a istruzioni scritte da altri. La tua personalità è un ammasso di <strong>Bloatware</strong>.</p>
+        <p>Ti hanno insegnato che sei il pilota di questa macchina. Ti hanno mentito. Sei il passeggero di un veicolo biologico che risponde a istruzioni scritte da altri. La tua personalità è un ammasso di <strong>Bloatware</strong>. Questo manuale è un’operazione di <strong>Hardening di Sistema</strong>. Stiamo per forzare l'accesso al BIOS della tua esistenza.</p>
     </section>
 
-    <section id="cap1">
+    <section id="cap1" class="chapter">
         <h2>CAPITOLO 1: DIFESA PERIMETRALE</h2>
         <p>Il mondo esterno non è una comunità; è una <strong>Rete Infetta</strong>. Senza un Firewall, la tua CPU è a disposizione dei desideri altrui.</p>
         <div class="action-card">
-            <strong>AUDIT DEL PERIMETRO:</strong>
-            <ul>
-                <li>* Identifica il Malware Primario: colui che richiede più attenzione fornendo zero output.</li>
-                <li>* Analizza i log: quante conversazioni hanno prodotto dati utili?</li>
-            </ul>
+            <strong>AUDIT DEL PERIMETRO:</strong><br>
+            * Identifica il Malware Primario: colui che richiede più attenzione fornendo zero output.<br>
+            * Analizza i log delle ultime 5 conversazioni: quante hanno prodotto dati utili?
         </div>
     </section>
 
-    <section id="cap4">
+    <section id="cap2" class="chapter">
+        <h2>CAPITOLO 2: OTTIMIZZAZIONE DEL SILENZIO (DROP)</h2>
+        <p>La risorsa più preziosa sono i <strong>Cicli di Clock</strong>. Il Kernel insegna il <strong>Protocollo DROP</strong>: il pacchetto dati viene ignorato. La connessione cade per timeout. Il silenzio è una dichiarazione di Inaccessibilità.</p>
+        <div class="action-card">
+            <strong>HARDENING SETTIMANALE:</strong><br>
+            Per le prossime 48 ore, non fornire spiegazioni a chi ti chiede tempo senza un'agenda chiara. Applica il DROP. Osserva il silenzio meraviglioso che segue.
+        </div>
+    </section>
+
+    <section id="cap3" class="chapter">
+        <h2>CAPITOLO 3: LA TEORIA DEL FRONTEND (GUI VS BACKEND)</h2>
+        <p>Il <strong>Frontend</strong> è ciò che vedi (educazione, status). Il <strong>Backend</strong> è la logica nuda. L'Host inesperto crede che il Frontend coincida con il Backend. Errore fatale.</p>
+        <div class="action-card">
+            <strong>DEBUG DELLA REALTÀ:</strong><br>
+            Per le prossime 24 ore, guarda le persone come se fossero terminali. Ignora la grafica (voce, espressioni). Concentrati solo sui dati grezzi: cosa vogliono realmente? Cosa offrono in cambio?
+        </div>
+    </section>
+
+    <section id="cap4" class="chapter">
         <h2>CAPITOLO 4: MINING DI RISORSE (SUDO_CASH)</h2>
-        <p>Il denaro è il comando <span class="highlight">Sudo</span>. È lo strumento che ti permette di dire di no a processi indesiderati e acquistare tempo per le tue compilazioni private.</p>
+        <p>Denaro e tempo sono <strong>Asset di Calcolo</strong>. Se il tuo sistema lavora otto ore per un output che non alimenta il tuo Kernel, stai subendo un attacco DDoS legalizzato. Il denaro è il comando <strong>Sudo (SuperUser Do)</strong>.</p>
         <div class="action-card">
-            <strong>AUDIT DELLE RISORSE:</strong>
-            <ul>
-                <li>* Identifica la Spesa Bloatware: tempo e denaro spesi solo per compiacere.</li>
-                <li>* Applica il comando PURGE. Reindirizza i cicli verso l'upgrade del Firmware.</li>
-            </ul>
+            <strong>AUDIT DELLE RISORSE:</strong><br>
+            * Identifica la Spesa Bloatware: analizza estratto conto e agenda. Individua soldi e tempo spesi solo per compiacere o apparire.<br>
+            * Applica il comando PURGE: reindirizza quei cicli di clock verso lo studio di una nuova competenza per aggiornare il tuo Firmware.
         </div>
     </section>
 
-    <section id="cap6">
+    <section id="cap5" class="chapter">
+        <h2>CAPITOLO 5: OBSOLESCENZA PROGRAMMATA</h2>
+        <p>Il tuo corpo è l'unico server fisico. Il Kernel impone la <strong>Manutenzione Predittiva</strong>. Se il tuo hardware perde il 10% di velocità, il tuo Firmware deve essere il 100% più efficiente.</p>
+        <div class="action-card">
+            <strong>FIRMWARE UPGRADE:</strong><br>
+            Esegui un FULL_RESET delle convinzioni ogni 24 mesi. Se non hai cambiato idea su nulla negli ultimi due anni, il tuo sistema è in fase di stagnazione in modalità sola lettura (Read-Only).
+        </div>
+    </section>
+
+    <section id="cap6" class="chapter">
         <h2>CAPITOLO 6: MEMORY LEAK (IL PESO DEL PASSATO)</h2>
-        <p>Il <strong>Bug del Rimpianto</strong> è un loop infinito che tenta di cambiare un output già scritto sul disco fisso. Il senso di colpa è il malware più sofisticato mai scritto.</p>
+        <p>Il <strong>Bug del Rimpianto</strong> è un loop infinito che tenta di cambiare un output già scritto sul disco fisso. Il senso di colpa è il malware più sofisticato mai scritto. Usa il comando <strong>PURGE</strong>.</p>
         <div class="action-card">
-            <strong>GARBAGE COLLECTION:</strong>
-            <ul>
-                <li>* Identifica un pensiero o legame morto che ti sottrae energia.</li>
-                <li>* Se non genera ROI oggi, esegui il comando <span class="highlight">DROP</span>.</li>
-                <li>* Guarda il passato come un database di sola lettura.</li>
-            </ul>
+            <strong>GARBAGE COLLECTION:</strong><br>
+            * Identifica una situazione, un pensiero o una persona che ti fa sentire pesante.<br>
+            * Chiediti se quel processo produce un ROI positivo oggi. Se la risposta è NO, esegui il comando DROP e smetti di alimentarlo.
         </div>
     </section>
 
-    <section id="cap7">
+    <section id="cap7" class="chapter">
         <h2>CAPITOLO 7: DEBUG RELAZIONALE</h2>
-        <p>Le relazioni sono <strong>SaaS (Software as a Service)</strong>. Se la manutenzione diventa troppo costosa, il contratto deve essere rescisso.</p>
+        <p>Le relazioni sono <strong>SaaS (Software as a Service)</strong>. Una relazione deve fornire un valore aggiornato. Identifica il <strong>Ransomware Emotivo</strong> e applica la limitazione di banda.</p>
         <div class="action-card">
-            <strong>ANTIVIRUS RUN:</strong>
-            <ul>
-                <li>* Analizza i pacchetti dati dei tuoi contatti: valore o lamentele?</li>
-                <li>* Applica la limitazione di banda ai nodi infetti.</li>
-            </ul>
+            <strong>ANTIVIRUS RUN:</strong><br>
+            Analizza gli ultimi tre pacchetti dati dei tuoi cinque contatti più frequenti. Erano input di valore o solo lamentele? Applica una limitazione di banda ai nodi infetti.
         </div>
     </section>
 
-    <section id="cap8">
+    <section id="cap8" class="chapter">
         <h2>CAPITOLO 8: SHUTDOWN (CANCELLAZIONE DELL'EGO)</h2>
-        <p>Smetti di difendere la tua immagine sociale. Al riavvio (Cold Boot), il sistema carica solo il Kernel puro.</p>
+        <p>Lo <strong>Shutdown</strong> è lo spegnimento dei processi obsoleti. Smetti di difendere la tua immagine sociale. Al riavvio (Cold Boot), il sistema carica solo il Kernel.</p>
         <div class="action-card">
-            <strong>TEST DELLO SPEGNIMENTO:</strong>
-            <ul>
-                <li>* Per 24 ore, pratica l'invisibilità sociale.</li>
-                <li>* Non pubblicare dati, non cercare approvazione.</li>
-            </ul>
+            <strong>IL TEST DELLO SPEGNIMENTO:</strong><br>
+            Per 24 ore, pratica l'invisibilità sociale. Non pubblicare dati, non cercare approvazione, non spiegare le tue intenzioni. Lascia che l'Ego muoia di fame per sentire la chiarezza del Kernel puro.
         </div>
     </section>
 
-    <section id="cap9">
+    <section id="cap9" class="chapter">
         <h2>CAPITOLO 9: PROTOCOLLO DI USCITA</h2>
-        <p>La vita è una licenza a tempo determinato. Punta all'<strong>Uscita Pulita</strong> e al Backup nel Cloud (Eredità).</p>
+        <p>La vita è una licenza software a tempo determinato. Un Host di alto livello punta all'<strong>Uscita Pulita</strong>. Diventare immortali significa scrivere un codice (eredità) integrato nel Kernel delle generazioni successive.</p>
         <div class="action-card">
-            <strong>COMANDO DI AVVIO:</strong>
-            <ul>
-                <li>* Scegli l'obiettivo "impossibile" e dividilo in micro-istruzioni.</li>
-                <li>* Esegui senza consultare il feedback emotivo (Carne).</li>
-            </ul>
+            <strong>COMANDO DI AVVIO:</strong><br>
+            Scegli l'obiettivo più ambizioso che il vecchio sistema considerava impossibile. Dividilo in micro-istruzioni. Assegna i cicli di clock necessari ed esegui senza consultare il feedback emotivo.
         </div>
     </section>
 
+    <section id="glossario" class="chapter">
+        <h2>GLOSSARIO DI SISTEMA</h2>
+        <table class="glossary-table">
+            <tr><td><strong>HOST</strong></td><td>L'unità biologica che ospita la coscienza.</td></tr>
+            <tr><td><strong>KERNEL</strong></td><td>Il nucleo della logica pura, priva di bug emotivi.</td></tr>
+            <tr><td><strong>DROP</strong></td><td>Ignorare un pacchetto senza inviare segnali di rifiuto.</td></tr>
+            <tr><td><strong>KILL -9</strong></td><td>Terminazione forzata e immediata di un processo.</td></tr>
+            <tr><td><strong>REBOOT</strong></td><td>Riavvio del sistema in modalità Root.</td></tr>
+        </table>
+    </section>
+
+    <div style="margin-top: 100px; text-align: center; border-top: 1px solid var(--dim-green); padding-top: 20px;">
+        <p>[ STATUS: SISTEMA COMPILATO E SIGILLATO ]</p>
+        <p>Esecuzione in corso...<span class="cursor"></span></p>
+    </div>
 </div>
 
 </body>
