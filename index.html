@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KERNEL_OS // v1.1.0_STABLE</title>
+    <title>KERNEL_OS // MANUALE OPERATIVO</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
         body { background-color: #000000 !important; color: #00ff41 !important; font-family: 'Courier New', Courier, monospace; line-height: 1.6; }
@@ -18,7 +18,11 @@
         .header-box { border: 2px solid #00ff41; padding: 30px; margin-bottom: 50px; text-align: center; background: rgba(0, 255, 65, 0.05); }
         h1 { font-size: 1.8em; margin-bottom: 10px; text-shadow: 0 0 5px #00ff41; }
         h2 { color: #ffffff !important; border-bottom: 1px solid #00ff41; padding-bottom: 10px; margin-top: 70px; text-transform: uppercase; }
+        
         .status-label { background: #00ff41; color: #000; padding: 4px 12px; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+        
+        /* IL BLOCCO ROSSO RIPRISTINATO */
+        .warning-red { color: #ff3e3e; border: 1px solid #ff3e3e; padding: 15px; margin: 20px 0; font-size: 0.9em; text-align: left; background: rgba(255, 62, 62, 0.1); }
 
         .action-card { background: #0a0a0a; border: 1px dashed #00ff41; padding: 25px; margin: 25px 0; color: #00ff41 !important; position: relative; }
         .action-card::before { content: "ISTRUZIONE_OPERATIVA"; position: absolute; top: -12px; left: 10px; background: #000; padding: 0 10px; font-size: 0.8em; font-weight: bold; }
@@ -30,7 +34,6 @@
         li { margin-bottom: 12px; padding-left: 20px; position: relative; }
         li::before { content: ">"; position: absolute; left: 0; color: #00ff41; }
 
-        /* GLOSSARIO */
         .glossary-table { width: 100%; border-collapse: collapse; margin: 30px 0; }
         .glossary-table td { border: 1px solid #004411; padding: 15px; font-size: 0.85em; vertical-align: top; }
         .glossary-table td:first-child { color: #ffffff; font-weight: bold; width: 30%; }
@@ -56,6 +59,10 @@
         <div class="status-label">STATUS: DOCUMENTO RISERVATO</div>
         <h1>KERNEL_OS: MANUALE DI SOVRASCRITTURA BIOLOGICA</h1>
         <p>Release v1.1.0_STABLE // Privilegi di Root Richiesti</p>
+        
+        <div class="warning-red">
+            <strong>ATTENZIONE:</strong> L'esecuzione di queste procedure comporterà la perdita definitiva della tua identità precedente. Una volta visto il Codice, la simulazione sociale non potrà più essere riavviata.
+        </div>
     </div>
 
     <section id="prefazione">
@@ -70,33 +77,4 @@
             <strong>AUDIT DEL PERIMETRO:</strong>
             <ul>
                 <li>Identifica il Malware Primario: colui che richiede più attenzione fornendo zero output.</li>
-                <li>Analizza i log delle ultime 5 conversazioni: quante hanno prodotto dati utili?</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="cap2">
-        <h2>CAPITOLO 2: OTTIMIZZAZIONE DEL SILENZIO (DROP)</h2>
-        <p>La risorsa più preziosa sono i <strong>Cicli di Clock</strong>. Il Kernel insegna il <strong>Protocollo DROP</strong>: ignorare senza segnali di ritorno.</p>
-        <div class="action-card">
-            <strong>HARDENING SETTIMANALE:</strong>
-            <ul>
-                <li>Per le prossime 48 ore, non fornire spiegazioni a chi ti chiede tempo senza un'agenda chiara.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="cap3">
-        <h2>CAPITOLO 3: LA TEORIA DEL FRONTEND (GUI VS BACKEND)</h2>
-        <p>Il Frontend è ciò che vedi (educazione, status). Il Backend è la logica nuda.</p>
-        <div class="action-card">
-            <strong>DEBUG DELLA REALTÀ:</strong>
-            <ul>
-                <li>Per 24 ore, guarda le persone come terminali. Ignora tono di voce o GUI. Concentrati sui dati grezzi.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="cap4">
-        <h2>CAPITOLO 4: MINING DI RISORSE (SUDO_CASH)</h2>
-        <p>Il denaro è il comando <strong>Sudo</strong>. È lo strumento per dire di no e acquistare tempo per le proprie compilazioni.</
+                <li>Analizza i log delle ultime 5 conversazioni: qu
