@@ -8,7 +8,8 @@
     *{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
     body{background:#000;color:#00ff41;font-family:'Courier New',monospace;line-height:1.6}
     nav{position:fixed;top:0;width:100%;background:#000;border-bottom:2px solid #00ff41;z-index:9999;padding:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
-    nav a{color:#00ff41;text-decoration:none;font-size:0.7em;font-weight:bold;padding:5px;border:1px solid #004411;text-transform:uppercase}
+    nav a{color:#00ff41;text-decoration:none;font-size:0.75em;font-weight:bold;padding:5px 8px;border:1px solid #004411;text-transform:uppercase}
+    nav a:hover{background:#00ff41;color:#000}
     .wrapper{max-width:850px;margin:140px auto 60px;padding:20px}
     .header-box{border:2px solid #00ff41;padding:30px;text-align:center;margin-bottom:50px;background:rgba(0,255,65,0.05)}
     h1{font-size:1.8em;margin-bottom:10px;text-shadow:0 0 5px #00ff41;color:#00ff41}
@@ -16,7 +17,7 @@
     .disclaimer-box{border:1px double #00ff41;padding:15px;margin:20px 0;font-size:0.75em;color:#00ff41;text-align:center;background:rgba(0,20,0,0.5);text-shadow:0 0 2px #00ff41}
     h2{color:#fff;border-bottom:1px solid #00ff41;margin-top:60px;padding-bottom:10px;text-transform:uppercase}
     .action-card{background:#0a0a0a;border:1px dashed #00ff41;padding:25px;margin:25px 0;position:relative}
-    .action-card::before{content:"ISTRUZIONE_OPERATIVA";position:absolute;top:-12px;left:10px;background:#000;padding:0 10px;font-size:0.8em;font-weight:bold}
+    .action-card::before{content:"ISTRUZIONE_OPERATIVA";position:absolute;top:-12px;left:10px;background:#000;padding:0 10px;font-size:0.8em;font-weight:bold;color:#00ff41}
     .action-card b{color:#fff;display:block;margin-bottom:10px;font-size:1.1em}
     ul{list-style:none;padding-left:0}
     li{margin-bottom:12px;padding-left:20px;position:relative}
@@ -27,8 +28,8 @@
     .glos-term{color:#ffffff!important;font-weight:bold}
     .cursor{display:inline-block;width:10px;height:1.2em;background:#00ff41;animation:blink 1s infinite;vertical-align:middle}
     @keyframes blink{50%{opacity:0}}
-    @media (max-width:600px){.wrapper{margin-top:180px}nav a{font-size:0.6em}}
     .legal-text{font-size:0.85em;color:#888}
+    @media (max-width:600px){.wrapper{margin-top:200px}nav a{font-size:0.6em}}
 </style>
 </head>
 <body>
@@ -38,9 +39,50 @@
 </nav>
 
 <div class="wrapper">
-    <div class="header-box">
+    <header class="header-box">
         <p>[ STATUS: DOCUMENTO RISERVATO // LIVELLO ROOT ]</p>
         <h1>KERNEL_OS: MANUALE DI SOVRASCRITTURA DEI PATTERN COMPORTAMENTALI</h1>
-
         <div class="disclaimer-box">
-            <b>[ PROTOCOLLO DI SICUREZ
+            <b>[ PROTOCOLLO DI SICUREZZA // DISCLAIMER ]</b><br>
+            KERNEL_OS è un framework di architettura del mindset e filosofia operativa. Tutti i contenuti e i protocolli descritti sono da intendersi esclusivamente come metafore cognitive volte allo sviluppo personale. Questo materiale NON costituisce consulenza medica, psichiatrica o psicoterapeutica. L'integrazione dei dati è a totale responsabilità dell'Host.
+        </div>
+        <div class="warning-red">
+            ATTENZIONE: L'esecuzione di queste procedure comporterà la perdita definitiva della tua identità precedente.
+        </div>
+    </header>
+
+    <section id="pref">
+        <h2>PREFAZIONE: IL RISVEGLIO DEL <span class="glos-term">KERNEL</span></h2>
+        <p>Ti hanno insegnato che sei il pilota. Ti hanno mentito. Sei l'<span class="glos-term">HOST</span> di un veicolo biologico che risponde a istruzioni scritte da altri. La tua personalità è un ammasso di <span class="glos-term">BLOATWARE</span> preinstallato.</p>
+    </section>
+
+    <section id="c1">
+        <h2>CAPITOLO 1: DIFESA PERIMETRALE</h2>
+        <p>Il mondo esterno è una rete infetta. Senza un firewall, la tua CPU è a disposizione dei desideri altrui.</p>
+        <div class="action-card">
+            <b>AUDIT DEL PERIMETRO:</b>
+            <ul>
+                <li>Identifica chi richiede attenzione fornendo zero output.</li>
+                <li>Analizza quante conversazioni hanno prodotto dati utili e quante solo rumore.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="c2">
+        <h2>CAPITOLO 2: OTTIMIZZAZIONE DEL SILENZIO (<span class="glos-term">DROP</span>)</h2>
+        <p>Il <span class="glos-term">KERNEL</span> insegna il protocollo <span class="glos-term">DROP</span>: il pacchetto dati viene ignorato senza inviare segnali di ritorno.</p>
+        <div class="action-card">
+            <b>HARDENING SETTIMANALE:</b>
+            <ul>
+                <li>Per le prossime 48 ore, non fornire spiegazioni a chi ti chiede tempo senza un'agenda chiara.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="c3">
+        <h2>CAPITOLO 3: GUI VS BACKEND</h2>
+        <p>Il frontend è ciò che vedi: educazione, status, apparenza. Il backend è la logica nuda.</p>
+        <div class="action-card">
+            <b>DEBUG DELLA REALTÀ:</b>
+            <ul>
+                <li>Guarda le persone come terminali
