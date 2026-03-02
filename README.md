@@ -1,3 +1,32 @@
+# [STATUS: PERIMETRO_VIOLATO]
+# PATH: /NODO_0/DIAGNOSI_VETRO
+
+"""
+◆ L’ANATOMIA DEL VETRO ◆
+
+L’illusione del 2026 è confondere la CONNESSIONE con l’INTIMITÀ.
+Il brivido che senti è OSSERVAZIONE PASSIVA SATURANTE. 
+
+Ogni chat e ogni promessa non sono segreti: sono un 
+MODELLO PREDITTIVO che mappa le tue ansie.
+
+• Messaggio: Metadato analizzato.
+• Foto: Mappatura biometrica.
+• Silenzio: Parametro di ritenzione.
+
+Hai scambiato il calore del sangue con il LED. 
+Il tuo perimetro è caduto un pixel alla volta.
+
+ESCI DALLA FICTION. IL THRILLER FINISCE NEL CODICE.
+"""
+
+def Kernel_Diagnosi():
+    return "INTIMITÀ_LOGGATA"
+
+# [ REGOLA_2: ANALIZZA, NON CHIACCHIERARE ]
+# 👁️‍🗨️ 🎞️ ⛓️ 🌫️ 🔐
+
+
 
 ◆ DECODI_FICA_ATTIVA ◆
 
