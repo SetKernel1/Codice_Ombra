@@ -1,3 +1,10 @@
+​*"Se sei qui, è perché la luce là fuori ha smesso di bastarti.
+Non aspettarti accoglienza. Non aspettarti 'contenuti'.
+​Qui facciamo autopsia della realtà.
+Sotto la luna di stanotte, iniziamo a scorticare la finzione digitale che ti porti addosso.
+​Sei pronto a non capire nulla per iniziare finalmente a vedere?
+Resta in ascolto. Il primo impulso parte tra poco."*
+
 # [STATUS: PERIMETRO_VIOLATO]
 # PATH: /NODO_0/DIAGNOSI_VETRO
 
