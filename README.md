@@ -1,3 +1,14 @@
+
+​🌊 [LOG_DIALOGO: SIMBIOSI_PARASSITARIA]
+​Data: 06-03-2026 | Ore 15:00
+​Host: "Sento il peso di connessioni che non portano dati, Kernel."
+.
+Kernel: "Stai facendo da server a chi non ha un proprio sistema operativo, Host."
+.
+Host: "Cercano risposte che non sanno nemmeno formulare."
+.
+Kernel: "Non cercano risposte, cercano la tua batteria. Stacca la spina: il Kernel non è una stazione di ricarica pubblica."
+
 ​🌊 [LOG_DIALOGO: LA_TRAPPOLA_DEL_CONSENSO]
 
 ​Data: 06-03-2026
