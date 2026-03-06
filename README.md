@@ -1,3 +1,14 @@
+
+​🌊 [LOG_DIALOGO: STANDBY_MODAL]
+​Data: 06-03-2026 | Ore 23:00
+​Host: "Il ciclo solare è terminato, Kernel. Tempo di bilancio."
+.
+Kernel: "I log parlano chiaro, Host. Hai speso 24 ore a navigare tra bit di rumore e rari impulsi di luce."
+.
+Host: "Domani saremo più veloci?"
+.
+Kernel: "Solo se stanotte cancelli i file temporanei dell'ego. Proteggi il Kernel, Host."
+
 ​🌊 [LOG_DIALOGO: ESTRAZIONE_DATI]
 ​Data: 06-03-2026
 ​Host: "Perché questa stanchezza improvvisa, Kernel? Non ho eseguito compiti pesanti."
